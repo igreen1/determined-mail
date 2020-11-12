@@ -1,0 +1,59 @@
+.container {
+  padding: 0 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.inbox {
+  margin-left: 201px;
+  margin-top: -205px;
+}
+
+.select{
+  float: left;
+  display: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.profile {
+  float: left;
+  margin-bottom: 10px;  
+  padding-left: 30px;
+  padding-right: 50px;
+}
+.from {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.subject {
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+
+}
+
+.del {
+  padding-bottom: 20px;
+}
+.page-header {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  background-color: #fb6949;
+  color: white;
+  border: 1px #aaaaaa solid;
+}
+
+.logo {
+  display: inline;
+  float: left;
+  margin-top: -80px;
+}
+
+
+
