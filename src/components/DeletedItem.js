@@ -36,11 +36,12 @@ export class DeletedItem extends Component {
 
 
     render() {
-        const { id, profile, from, subject } = this.props.deleted;
+        const { id, profile, from, subject, selected } = this.props.deleted;
         return (
             <div style={this.getStyle()}>
                 <input className="select" 
                         type="checkbox"
+                        checked={selected}
                         onChange={this.props.markSelectedDeleted.bind(this, id)} /> {' '}   
                     <div className="profile" style={this.getSelectedStyle()}>{profile}</div>
                     <div className="from">

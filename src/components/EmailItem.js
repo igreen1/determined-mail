@@ -34,15 +34,18 @@ export class EmailItem extends Component {
         }
     }
 
+    
+
 
     render() {
-        const { id, profile, from, subject } = this.props.email;
+        const { id, profile, from, subject, selected } = this.props.email;
         return (
             <React.Fragment>
                 <div style={this.getStyle()}>
                     <div className="emails">
                         <input className="select"
                             type="checkbox"
+                            checked={selected}
                             onChange={this.props.markSelected.bind(this, id)} /> {' '}
                         <Link className="link" to='/email'>
                             <div className="profile" style={this.getSelectedStyle()}>{profile}</div>

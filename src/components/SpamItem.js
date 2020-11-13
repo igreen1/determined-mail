@@ -36,11 +36,12 @@ export class SpamItem extends Component {
 
 
     render() {
-        const { id, profile, from, subject } = this.props.spam;
+        const { id, profile, from, subject, selected } = this.props.spam;
         return (
             <div style={this.getStyle()}>
                 <input className="select" 
                         type="checkbox"
+                        checked={selected}
                         onChange={this.props.markSelectedSpam.bind(this, id)} /> {' '}   
                     <div className="profile" style={this.getSelectedStyle()}>{profile}</div>
                     <div className="from">
