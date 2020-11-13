@@ -46,7 +46,7 @@ export class EmailItem extends Component {
                         <input className="select"
                             type="checkbox"
                             checked={selected}
-                            onChange={this.props.markSelected.bind(this, id)} /> {' '}
+                            onClick={this.props.markSelected.bind(this, id)} /> {' '}
                         <Link className="link" to='/email'>
                             <div className="profile" style={this.getSelectedStyle()}>{profile}</div>
                             <div className="from">

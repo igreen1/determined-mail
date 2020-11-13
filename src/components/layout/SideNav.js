@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {component} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -38,7 +38,7 @@ const headerStyle = {
     border: '1px solid #aaaaaa',
 }
 
-export default function SideNav() {
+function SideNav() {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
@@ -116,3 +116,5 @@ export default function SideNav() {
     </React.Fragment>
   );
 }
+
+export default SideNav;

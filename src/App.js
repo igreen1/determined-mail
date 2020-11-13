@@ -104,101 +104,129 @@ class App extends Component {
   }
 
   // Toggle Select All In Inbox
-  toggleSelectAllInInbox = (e) => {
-    let emailId = e.target.id;
-
-    this.setState({ emails: this.state.emails.map(email => {
-      if(emailId === "selectAll" && this.state.allSelected === false) {
-        this.state.allSelected = true;
-        email.selected = true;
-        return email;
-      } else {
-        email.selected = !email.selected;
-        return email;
-      }
-      })
-    })
-
+  toggleSelectAllInInbox = () => {
+    this.state.allSelected = !this.state.allSelected;
+    for (var i = 0; i < this.state.emails.length; i++) {
+      var email = this.state.emails[i];
+      email.selected = this.state.allSelected;
+    }
+          
+    this.setState({emails: this.state.emails})
   }
 
   // Toggle Select All In Deleted
-  toggleSelectAllInDeleted = (e) => {
-    let deletedId = e.target.id;
-
-    this.setState({ deleted: this.state.deleted.map(del => {
-      if(deletedId === "selectAll" && this.state.allSelected === false) {
-        this.state.allSelected = true;
-        del.selected = true;
-        return del;
-      } else {
-        del.selected = !del.selected;
-        return del;
-      }
-      })
-    })
-
+  toggleSelectAllInDeleted = () => {
+    this.state.allSelected = !this.state.allSelected;
+    for (var i = 0; i < this.state.deleted.length; i++) {
+      var email = this.state.deleted[i];
+      email.selected = this.state.allSelected;
+    }       
+    this.setState({deleted: this.state.deleted})
   }
 
   // Toggle Select All In Spam
-  toggleSelectAllInSpam = (e) => {
-    let spamId = e.target.id;
-
-    this.setState({ spam: this.state.spam.map(spam => {
-      if(spamId === "selectAll" && this.state.allSelected === false) {
-        this.state.allSelected = true;
-        spam.selected = true;
-        return spam;
-      } else {
-        spam.selected = !spam.selected;
-        return spam;
-      }
-      })
-    })
-
+  toggleSelectAllInSpam = () => {
+    this.state.allSelected = !this.state.allSelected;
+    for (var i = 0; i < this.state.spam.length; i++) {
+      var email = this.state.spam[i];
+      email.selected = this.state.allSelected;
+    }       
+    this.setState({spam: this.state.spam})
   }
 
-  // Toggle Selected
+  // Toggle Email Selected in Inbox
   markSelected = (id) => {
     this.setState({ emails: this.state.emails.map(email => {
-      if(email.id === id || this.state.allSelected) {
-        email.selected = !email.selected
+      if (email.id === id && this.state.allSelected) {
+        email.selected = false;
+        this.state.allSelected = false;
+      } 
+      if (email.id === id && !this.state.allSelected) {
+        email.selected = !email.selected;
+      }
+      if (email.id === id && email.selected) {
+        this.state.allSelected = false;
       }
       return email;
-    }) });
+    }) 
+  });
   }
 
-  // Toggle Spam Selected
+  // Toggle Email Selected in Spam
   markSelectedSpam = (id) => {
-    this.setState({ spam: this.state.spam.map(spam => {
-      if(spam.id === id) {
-        spam.selected = !spam.selected
+    this.setState({ spam: this.state.spam.map(email => {
+      if (email.id === id && this.state.allSelected) {
+        email.selected = false;
+        this.state.allSelected = false;
+      } 
+      if (email.id === id && !this.state.allSelected) {
+        email.selected = !email.selected;
       }
-      return spam;
-    }) });
+      if (email.id === id && email.selected) {
+        this.state.allSelected = false;
+      }
+      return email;
+    }) 
+  });
   }
 
-  // Toggle Deleted Selected
+  // Toggle Email Selected In Deleted
   markSelectedDeleted = (id) => {
-    this.setState({ deleted: this.state.deleted.map(deleted => {
-      if(deleted.id === id) {
-        deleted.selected = !deleted.selected
+    this.setState({ deleted: this.state.deleted.map(email => {
+      if (email.id === id && this.state.allSelected) {
+        email.selected = false;
+        this.state.allSelected = false;
+      } 
+      if (email.id === id && !this.state.allSelected) {
+        email.selected = !email.selected;
       }
-      return deleted;
-    }) });
+      if (email.id === id && email.selected) {
+        this.state.allSelected = false;
+      }
+      return email;
+    }) 
+  });
   }
 
-  // Delete Spam
+  // Remove Email from Inbox if selected
+  removeIfSelected = () => {
+        this.setState({deleted: [...this.state.deleted, ...this.state.emails.filter(email => email.selected)]});
+        this.setState({emails: [...this.state.emails.filter(email => !email.selected)] }); 
+  }
+
+  // Remove Email from deleted if selected
+  removeIfSelectedInDeleted = () => {
+    this.setState({deleted: [...this.state.deleted.filter(email => !email.selected)] }); 
+}
+
+// Remove Email from spam if selected
+removeIfSelectedInSpam = () => {
+  this.setState({deleted: [...this.state.deleted, ...this.state.emails.filter(email => email.selected)]});
+  this.setState({spam: [...this.state.spam.filter(email => !email.selected)] }); 
+}
+
+  // Deselect Emails when new page loaded
+  deselectAll = () => {
+    this.setState({deleted: this.state.deleted.map(email => {
+      email.selected = false;
+      return email;
+    })
+  })
+  }
+
+
+  // Delete Email from Spam Folder
   delSpam = (id) => {
     this.setState({deleted: [...this.state.deleted, ...this.state.spam.filter(email => email.id === id)]});
     this.setState({ spam: [...this.state.spam.filter(spam => spam.id !== id)] });
   }
 
-  // Delete for Good
+  // Delete Email from Deleted Folder
   delDeleted = (id) => {
     this.setState({ deleted: [...this.state.deleted.filter(deleted => deleted.id !== id)] });
   }
 
-  // Delete Email
+  // Delete Email from Inbox
   delEmail = (id) => {
     this.setState({deleted: [...this.state.deleted, ...this.state.emails.filter(email => email.id === id)]});
     this.setState({ emails: [...this.state.emails.filter(email => email.id !== id)] });
@@ -220,8 +248,9 @@ class App extends Component {
                           <input className="select" 
                         type="checkbox"
                         id="selectAll"
-                        selected={this.state.allSelected}
+                        checked={this.state.allSelected}
                         onClick={this.toggleSelectAllInInbox} /> {' '}
+                        <button className="discard-button" onClick={this.removeIfSelected}>Discard</button>
                         </header>
                           <Emails emails={this.state.emails}
                                 markSelected={this.markSelected}
@@ -235,8 +264,10 @@ class App extends Component {
                          <input className="select" 
                         type="checkbox"
                         id="selectAll"
+                        checked={this.state.allSelected}
                         selected={this.state.allSelected}
                         onClick={this.toggleSelectAllInSpam} /> {' '}
+                        <button className="discard-button" onClick={this.removeIfSelectedInSpam}>Discard</button>
                          </header>
                           <Spam spam={this.state.spam}
                                 markSelectedSpam={this.markSelectedSpam}
@@ -250,8 +281,10 @@ class App extends Component {
                           <input className="select" 
                         type="checkbox"
                         id="selectAll"
+                        checked={this.state.allSelected}
                         selected={this.state.allSelected}
                         onClick={this.toggleSelectAllInDeleted} /> {' '}
+                        <button className="discard-button" onClick={this.removeIfSelectedInDeleted}>Discard</button>
                         </header>
                           <Deleted deleted={this.state.deleted}
                                 markSelectedDeleted={this.markSelectedDeleted}
