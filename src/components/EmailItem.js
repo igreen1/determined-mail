@@ -47,12 +47,13 @@ export class EmailItem extends Component {
                             type="checkbox"
                             checked={selected}
                             onClick={this.props.markSelected.bind(this, id)} /> {' '}
-                        <Link className="link" to='/email'>
+                        <Link className="link" to={`/email/${id}`}>
+                        
                             <div className="profile" style={this.getSelectedStyle()}>{profile}</div>
                             <div className="from">
-                                {from}
+                                From: {from}
                             </div>
-                            <div className="subject" style={this.getSelectedStyle()}>{subject}</div>
+                            <div className="subject" style={this.getSelectedStyle()}>Subject: {subject}</div>
                         </Link>
                         <BsFillTrashFill className="del"
                             size={32}
