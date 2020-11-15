@@ -6,7 +6,7 @@ import About from './components/pages/About';
 import NewMessage from './components/NewMessage'
 import Spam from './components/Spam';
 import Deleted from './components/Deleted';
-import DummyEmail from './components/pages/DummyEmail';
+import ReadEmail from './components/pages/ReadEmail';
 import SideNav from './components/layout/SideNav'
 
 
@@ -36,43 +36,49 @@ class App extends Component {
       {
         id: 1,
         profile: <img src={profile2} alt='profile1' height='60' width='60'/>,
-        from: "From: Leigh Lewis",
-        subject: "Subject: How are you?",
+        from: "Leigh Lewis",
+        subject: "How are you?",
+        body:"Hello",
         selected: false
       },
       {
         id: 2,
         profile: <img src={profile3} alt='profile1' height='60' width='60'/>,
-        from: "From: Nolan Jacobs Walker",
-        subject: "Subject: Class Today",
+        from: "Nolan Jacobs Walker",
+        body:"Hello",
+        subject: "Class Today",
         selected: false
       },
       {
         id: 5,
         profile: <img src={profile9} alt='profile9' height='60' width='60'/>,
-        from: "From: Taylor Flanagan",
-        subject: "Subject: Help with Homework",
+        from: "Taylor Flanagan",
+        body:"Hello",
+        subject: "Help with Homework",
         selected: false
       },
       {
         id: 10,
         profile: <img src={profile10} alt='profile1' height='60' width='60'/>,
-        from: "From: Megan West",
-        subject: "Subject: Take DEEP",
+        from: "Megan West",
+        body:"Hello",
+        subject: "Take DEEP",
         selected: false
       },
       {
         id: 3,
         profile: <img src={profile1} alt='profile1' height='60' width='60'/>,
-        from: "From: Nicole Infantino",
-        subject: "Subject: Homework",
+        from: "Nicole Infantino",
+        body:"Hello",
+        subject: "Homework",
         selected: false
       },
       {
         id: 4,
         profile: <img src={profile5} alt='profile1' height='60' width='60'/>,
-        from: "From: Dr. Trevor Zink",
-        subject: "Subject: TA Grading",
+        from: "Dr. Trevor Zink",
+        body:"Hello",
+        subject: "TA Grading",
         selected: false
       }
     ],
@@ -80,8 +86,9 @@ class App extends Component {
       {
         id: 6,
         profile: <img src={profile6} alt='profile6' height='60' width='60'/>,
-        from: "From: SNAIL MAIL",
-        subject: "Subject: SPAMMMMMY",
+        from: "SNAIL MAIL",
+        body:"Hello",
+        subject: "SPAMMMMMY",
         selected: false
       }
     ],
@@ -89,15 +96,17 @@ class App extends Component {
       {
       id: 7,
       profile: <img src={profile7} alt='profile7' height='60' width='60'/>,
-      from: "From: Jack Manson",
-      subject: "Subject: Complete this Survey",
+      from: "Jack Manson",
+      body:"Hello",
+      subject: "Complete this Survey",
       selected: false
     },
     {
       id: 8,
       profile: <img src={profile8} alt='profile8' height='60' width='60'/>,
-      from: "From: Jenny Little",
-      subject: "Subject: Lost Items",
+      from: "Jenny Little",
+      body:"Hello",
+      subject: "Lost Items",
       selected: false
     }
   ]
@@ -318,10 +327,15 @@ removeIfSelectedInSpam = () => {
                                 delDeleted={this.delDeleted} 
                                 onLoad={this.state.allSelected = false} />
                       </React.Fragment>
-                    )} />  
+                    )} />
+                    <Route path="/email/:id" render = {props => (
+                      <React.Fragment>
+                        <ReadEmail emails={this.state.emails}/>
+                      </React.Fragment>
+                    )}/>  
                   <Route path="/about" component={About} />
-                  <Route path="/newMessage" component={NewMessage}/>
-                  <Route path="/email" component={DummyEmail}/>
+                  
+                  <Route path="newMessage" component={ReadEmail} />
 
                   </switch>
                 </div>              

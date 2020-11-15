@@ -45,13 +45,13 @@ export class SpamItem extends Component {
                         onChange={this.props.markSelectedSpam.bind(this, id)} /> {' '}   
                     <div className="profile" style={this.getSelectedStyle()}>{profile}</div>
                     <div className="from">
-                        {from}
+                        From: {from}
                         <BsFillTrashFill className="del"
                                     size={32}
                                     onClick={this.props.delSpam.bind(this, id)} 
                                     style={this.getDelStyle()}/>
                     </div>
-                    <div className="subject" style={this.getSelectedStyle()}>{subject}</div>
+                    <div className="subject" style={this.getSelectedStyle()}>Subject: {subject}</div>
                     
 
             </div>
