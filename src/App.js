@@ -203,6 +203,21 @@ class App extends Component {
     })
   }
 
+  // Mark Spam if Email in Inbox is Selected
+  markSpamIfSelected = () => {
+    this.setState((prevState) => {
+      prevState.spam =[...prevState.spam, ...prevState.emails.filter(email => email.selected)]
+      prevState.emails = prevState.emails.filter(email => !email.selected);
+      prevState.spam.map(email => {
+        email.selected = false;
+        return email;
+      });
+
+      return prevState;
+    
+    })
+  }
+
   // Remove Email from deleted if selected
   removeIfSelectedInDeleted = () => {
     this.setState({deleted: [...this.state.deleted.filter(email => !email.selected)] }); 
@@ -210,18 +225,18 @@ class App extends Component {
 
 // Remove Email from spam if selected
 removeIfSelectedInSpam = () => {
-  this.setState({deleted: [...this.state.deleted, ...this.state.emails.filter(email => email.selected)]});
-  this.setState({spam: [...this.state.spam.filter(email => !email.selected)] }); 
-}
-
-  // Deselect Emails when new page loaded
-  deselectAll = () => {
-    this.setState({deleted: this.state.deleted.map(email => {
+  this.setState((prevState) => {
+    prevState.deleted =[...prevState.deleted, ...prevState.spam.filter(email => email.selected)]
+    prevState.spam = prevState.spam.filter(email => !email.selected);
+    prevState.deleted.map(email => {
       email.selected = false;
       return email;
-    })
+    });
+
+    return prevState;
+  
   })
-  }
+}
 
 
   // Delete Email from Spam Folder
@@ -260,6 +275,7 @@ removeIfSelectedInSpam = () => {
                         checked={this.state.allSelected}
                         onClick={this.toggleSelectAllInInbox} /> {' '}
                         <button className="discard-button" onClick={this.removeIfSelected}>Discard</button>
+                        <button className="mark-spam-button" onClick={this.markSpamIfSelected}>Mark as Spam</button>
                         </header>
                           <Emails emails={this.state.emails}
                                 markSelected={this.markSelected}
