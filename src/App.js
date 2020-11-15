@@ -197,6 +197,7 @@ class App extends Component {
         email.selected = false;
         return email;
       });
+      this.state.allSelected = false;
 
       return prevState;
     
@@ -212,6 +213,7 @@ class App extends Component {
         email.selected = false;
         return email;
       });
+      this.state.allSelected = false;
 
       return prevState;
     
@@ -220,7 +222,9 @@ class App extends Component {
 
   // Remove Email from deleted if selected
   removeIfSelectedInDeleted = () => {
-    this.setState({deleted: [...this.state.deleted.filter(email => !email.selected)] }); 
+    this.setState({deleted: [...this.state.deleted.filter(email => !email.selected)] });
+    this.state.allSelected = false;
+ 
 }
 
 // Remove Email from spam if selected
@@ -232,6 +236,7 @@ removeIfSelectedInSpam = () => {
       email.selected = false;
       return email;
     });
+    this.state.allSelected = false;
 
     return prevState;
   
@@ -279,8 +284,7 @@ removeIfSelectedInSpam = () => {
                         </header>
                           <Emails emails={this.state.emails}
                                 markSelected={this.markSelected}
-                                delEmail={this.delEmail} 
-                                onLoad={this.state.allSelected = false} />
+                                delEmail={this.delEmail} />
                       </React.Fragment>
                     )} />
                     <Route path="/spam" render={props => (
@@ -297,8 +301,7 @@ removeIfSelectedInSpam = () => {
                          </header>
                           <Spam spam={this.state.spam}
                                 markSelectedSpam={this.markSelectedSpam}
-                                delSpam={this.delSpam} 
-                                onLoad={this.state.allSelected = false} />
+                                delSpam={this.delSpam} />
                       </React.Fragment>
                     )} />  
                     <Route path="/deleted" render={props => (
@@ -315,8 +318,7 @@ removeIfSelectedInSpam = () => {
                         </header>
                           <Deleted deleted={this.state.deleted}
                                 markSelectedDeleted={this.markSelectedDeleted}
-                                delDeleted={this.delDeleted} 
-                                onLoad={this.state.allSelected = false} />
+                                delDeleted={this.delDeleted} />
                       </React.Fragment>
                     )} />  
                   <Route path="/about" component={About} />
