@@ -49,6 +49,7 @@
 .page-header {
   font-family: Arial, Helvetica, sans-serif;
   padding: 20px;
+  padding-bottom: 40px;
   background-color: #fb6949;
   color: white;
   border: 1px #aaaaaa solid;
@@ -63,7 +64,14 @@
 .discard-button {
   background-color: #c9fdff;
   float: right;
-  margin-bottom: 10px;
-  padding: 10px;
+  padding: 15px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.mark-spam-button {
+  background-color: #c9fdff;
+  float: right;
+  padding: 15px;
   cursor: pointer;
 }
