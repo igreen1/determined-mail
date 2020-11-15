@@ -336,8 +336,7 @@ removeIfSelectedInSpam = () => {
                       </React.Fragment>
                     )}/>  
                   <Route path="/about" component={About} />
-                  
-                  <Route path="newMessage" component={ReadEmail} />
+                  <Route path="/newMessage" component={NewMessage} />
 
                   </switch>
                 </div>              
