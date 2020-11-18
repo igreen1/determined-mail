@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import TextBox from "./Textbox";
-import PropTypes from "prop-types";
+import React, { Component } from "react"
+import TextBox from "./Textbox"
+import PropTypes from "prop-types"
 
 const inputStyle = {
   backgroundColor: "#fff",
@@ -12,7 +12,7 @@ const inputStyle = {
   fontFamily: "arial",
   fontSize: "25px",
   color: "#000",
-};
+}
 
 const labelStyle = {
   backgroundColor: "#fb6949",
@@ -23,7 +23,7 @@ const labelStyle = {
   color: "#fff",
   padding: "10px 0px 5px 10px",
   marginTop: "10px",
-};
+}
 
 const draftEmailStyle = {
   resize: "none",
@@ -36,7 +36,7 @@ const draftEmailStyle = {
   border: "5px solid",
   borderColor: "#fb6949",
   color: "#000",
-};
+}
 
 const buttonStyle = {
   backgroundColor: "#fb6949",
@@ -48,20 +48,20 @@ const buttonStyle = {
   align: "center",
   margin: "5px",
   border: "none",
-};
+}
 
 const buttonContainer = {
   display: "flex",
   flexDirection: "row-reverse",
   width: "80vw",
   marginTop: "5px",
-};
+}
 
 const containerStyle = {
   display: "flex",
   flexDirection: "column",
   width: "80vw",
-};
+}
 
 class NewMesssage extends Component {
   render() {
@@ -126,8 +126,8 @@ class NewMesssage extends Component {
           </button>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default NewMesssage;
+export default NewMesssage

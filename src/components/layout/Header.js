@@ -7,7 +7,7 @@
 //             <header className='header' style={headerStyle}>
 //                 <h1>Determined Mail</h1>
 //             </header>
-            
+
 //         </React.Fragment>
 //     )
 // }

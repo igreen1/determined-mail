@@ -1,77 +1,75 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { BsFillTrashFill } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
-
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { BsFillTrashFill } from "react-icons/bs"
+import { Link } from "react-router-dom"
 
 export class EmailItem extends Component {
-    getStyle = () => {
-        return {
-            backgroundColor: this.props.email.selected ? '#e5e5e5' : '#fff',
-            padding: '30px',
-            borderBottom: '1px #AAAAAA solid',
-            borderLeft: '1px #AAAAAA solid',
-            borderRight: '1px #AAAAAA solid',
-            textDecoration: 'none'
-        }
+  getStyle = () => {
+    return {
+      backgroundColor: this.props.email.selected ? "#e5e5e5" : "#fff",
+      padding: "30px",
+      borderBottom: "1px #AAAAAA solid",
+      borderLeft: "1px #AAAAAA solid",
+      borderRight: "1px #AAAAAA solid",
+      textDecoration: "none",
     }
-    getDelStyle = () => {
-        return {
-            background: '#c9fdff',
-            color: '#000000',
-            border: 'none',
-            padding: '6px 8px',
-            marginTop: '-40px',
-            borderRadius: '50%',
-            cursor: 'pointer',
-            float: 'right',
-        }
+  }
+  getDelStyle = () => {
+    return {
+      background: "#c9fdff",
+      color: "#000000",
+      border: "none",
+      padding: "6px 8px",
+      marginTop: "-40px",
+      borderRadius: "50%",
+      cursor: "pointer",
+      float: "right",
     }
+  }
 
-    getSelectedStyle = () => {
-        return {
-            opacity: this.props.email.selected ? '70%' : '100%'
-        }
+  getSelectedStyle = () => {
+    return {
+      opacity: this.props.email.selected ? "70%" : "100%",
     }
+  }
 
-    
-
-
-    render() {
-        const { id, profile, from, subject, selected } = this.props.email;
-        return (
-            <React.Fragment>
-                <div style={this.getStyle()}>
-                    <div className="emails">
-                        <input className="select"
-                            type="checkbox"
-                            checked={selected}
-                            onClick={this.props.markSelected.bind(this, id)} /> {' '}
-                        <Link className="link" to={`/email/${id}`}>
-                        
-                            <div className="profile" style={this.getSelectedStyle()}>{profile}</div>
-                            <div className="from">
-                                From: {from}
-                            </div>
-                            <div className="subject" style={this.getSelectedStyle()}>Subject: {subject}</div>
-                        </Link>
-                        <BsFillTrashFill className="del"
-                            size={32}
-                            onClick={this.props.delEmail.bind(this, id)}
-                            style={this.getDelStyle()} />
-                    </div>
-                </div>
-            </React.Fragment>
-        )
-    }
+  render() {
+    const { id, profile, from, subject, selected } = this.props.email
+    return (
+      <React.Fragment>
+        <div style={this.getStyle()}>
+          <div className="emails">
+            <input
+              className="select"
+              type="checkbox"
+              checked={selected}
+              onClick={this.props.markSelected.bind(this, id)}
+            />{" "}
+            <Link className="link" to={`/email/${id}`}>
+              <div className="profile" style={this.getSelectedStyle()}>
+                {profile}
+              </div>
+              <div className="from">From: {from}</div>
+              <div className="subject" style={this.getSelectedStyle()}>
+                Subject: {subject}
+              </div>
+            </Link>
+            <BsFillTrashFill
+              className="del"
+              size={32}
+              onClick={this.props.delEmail.bind(this, id)}
+              style={this.getDelStyle()}
+            />
+          </div>
+        </div>
+      </React.Fragment>
+    )
+  }
 }
 
 // PropTypes
 EmailItem.propTypes = {
-    email: PropTypes.object.isRequired
+  email: PropTypes.object.isRequired,
 }
-
-
-
 
 export default EmailItem
