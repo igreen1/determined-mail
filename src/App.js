@@ -17,8 +17,10 @@ import hardcodedEmails from './hardcodedEmails'
 import EmailList from './components/EmailList'
 import WriteEmail from './components/WriteEmail'
 import useEmails from './useEmails'
+import logo from './components/layout/logo.png'
 
 import './App.css'
+import SideNav from './components/layout/SideNav'
 
 const App = () => {  // eslint-disable no-unused-vars 
 
@@ -39,10 +41,15 @@ const App = () => {  // eslint-disable no-unused-vars
     <Router>
     <div className='app'>
       <div className='header'>
-        {/* todo */}
+      <header className="header">
+        <h1>Determined Mail</h1>
+        <div className="logo">
+          <img src={logo} alt="logo" height="80" width="80" />
+        </div>
+      </header>
       </div>
       <div className='sidebar'>
-        {/* todo */}
+        <SideNav />
       </div>
       <div className='email-viewport'>
         {/* The view email list pages */}
