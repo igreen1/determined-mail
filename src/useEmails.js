@@ -13,6 +13,15 @@ export default (initialValue) => {
     },
 
     deleteEmail: (key) => {
+      //really just move to deleted page (perma delete is below)
+      setEmails(emails.map((email) => {
+        if(email.id===key){
+          email.page = 'deleted'
+        }
+      }))
+    },
+
+    permaDeleteEmail: (key) => {
       setEmails(emails.filter((email) => email.id !== key))
     },
 
