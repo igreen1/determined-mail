@@ -8,7 +8,7 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
   if (email.page === 'draft' || email.to) {
     //draft page, display 'to' not 'from'
     emailInfo = (
-      <Link className="link" to={`/newEmail/${email?.id}`}>
+      <Link className="link" to={`/new/${email?.id}`}>
         <div className="profile">{email?.profile}</div>
         <div className="to">To: {email?.to}</div>
         <div className="subject">Subject: {email?.subject}</div>

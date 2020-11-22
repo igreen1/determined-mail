@@ -4,7 +4,6 @@ import EmailItem from './EmailItem'
 
 const EmailList = ({emails, deleteEmail, selectEmail}) => {
   return emails.sort((a,b) => a.id - b.id)
-  //.filter( (email) => email.page === page)
   .map((email) => (
     <EmailItem key={email.id} email={email} deleteEmail={deleteEmail} selectEmail={selectEmail} />
   ))

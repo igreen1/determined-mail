@@ -3,7 +3,7 @@ import React from "react"
 import profile1 from "./components/profiles/profile1.png"
 import profile2 from "./components/profiles/profile2.png"
 import profile3 from "./components/profiles/profile3.png"
-//import profile4 from "./components/profiles/profile4.png"
+import profile4 from "./components/profiles/profile4.png"
 import profile5 from "./components/profiles/profile5.png"
 import profile6 from "./components/profiles/profile6.png"
 import profile7 from "./components/profiles/profile7.png"
@@ -93,6 +93,15 @@ const allEmails = [
             subject: "Lost Items",
             selected: false,
             page: 'deleted'
-          }
+          },
+          {
+            id: 187178,
+            profile: <img src={profile4} alt="profile8" height="60" width="60" />,
+            to:"Somebody",
+            body: "Hello there i guess I am writing about",
+            subject: "Lost Items",
+            selected: false,
+            page: 'draft',
+          },
 ]
 export default allEmails;
