@@ -11,16 +11,15 @@ import profile8 from "./components/profiles/profile8.png"
 import profile9 from "./components/profiles/profile9.png"
 import profile10 from "./components/profiles/profile10.png"
 
-const allEmails = {
+const allEmails = [
 
-    emails: [
         {
             id: 1,
             profile: <img src={profile2} alt="profile1" height="60" width="60" />,
             from: "Leigh Lewis",
             subject: "How are you?",
             body: "Hello",
-            selected: false,
+            selected: true,
             page: 'inbox'
         },
         {
@@ -94,8 +93,6 @@ const allEmails = {
             subject: "Lost Items",
             selected: false,
             page: 'deleted'
-          },
-
-    ]
-}
+          }
+]
 export default allEmails;
