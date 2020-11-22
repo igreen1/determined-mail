@@ -18,24 +18,17 @@ import EmailList from './components/EmailList'
 import WriteEmail from './components/WriteEmail'
 import useEmails from './useEmails'
 import logo from './components/layout/logo.png'
+import PageHeader from './components/PageHeader'
 
 import './App.css'
 import SideNav from './components/layout/SideNav'
 
 const App = () => {  // eslint-disable no-unused-vars 
 
-
-  const {emails, setEmails, deleteEmail, selectEmail, 
-      saveDraft, grabPage, selectedToDeleted, 
-      selectedToSpam, selectedToInbox} = useEmails(hardcodedEmails)
-
-  const spam = (
-    <EmailList 
-      emails={grabPage('spam')}
-      deleteEmail={deleteEmail}
-      selectEmail={selectEmail}
-    />
-  )
+  // because we haven't used redux,, little ugly
+  const {emails, moveToTrash, selectEmail, allSelected,
+      saveDraft, grabPage, selectedToDeleted, toggleSelectAll,
+      selectedToSpam, selectedToInbox, permaDeleteEmail} = useEmails(hardcodedEmails)
 
   return (
     <Router>
@@ -54,27 +47,59 @@ const App = () => {  // eslint-disable no-unused-vars
       <div className='email-viewport'>
         {/* The view email list pages */}
         <Route exact path="/">
+          <PageHeader 
+            title='Inbox'
+            pageName='inbox'
+            selectedToDeleted={selectedToDeleted}
+            selectedToSpam={selectedToSpam}
+            toggleSelectAll={toggleSelectAll}
+            allSelected={allSelected}
+          />
           <EmailList 
             emails={grabPage('inbox')}
-            deleteEmail={deleteEmail}
+            deleteEmail={moveToTrash}
             selectEmail={selectEmail}/>
         </Route>
         <Route path='/spam'>
+        <PageHeader 
+            title='Spam'
+            pageName='spam'
+            selectedToDeleted={selectedToDeleted}
+            selectedToSpam={selectedToSpam}
+            toggleSelectAll={toggleSelectAll}
+            allSelected={allSelected}
+          />
         <EmailList 
             emails={grabPage('spam')}
-            deleteEmail={deleteEmail}
+            deleteEmail={moveToTrash}
             selectEmail={selectEmail}/>
         </Route>
         <Route path='/trash'>
+        <PageHeader 
+            title='Trash'
+            pageName='deleted'
+            selectedToDeleted={selectedToDeleted}
+            selectedToSpam={selectedToSpam}
+            toggleSelectAll={toggleSelectAll}
+            allSelected={allSelected}
+          />
         <EmailList 
             emails={grabPage('deleted')}
-            deleteEmail={deleteEmail}
+            deleteEmail={permaDeleteEmail}
             selectEmail={selectEmail}/>
         </Route>
         <Route path='/drafts'>
+        <PageHeader 
+            title="Drafts"
+            pageName='drafts'
+            selectedToDeleted={selectedToDeleted}
+            selectedToSpam={selectedToSpam}
+            toggleSelectAll={toggleSelectAll}
+            allSelected={allSelected}
+          />
         <EmailList 
             emails={grabPage('draft')}
-            deleteEmail={deleteEmail}
+            deleteEmail={permaDeleteEmail}
             selectEmail={selectEmail}/>
         </Route>
           {/* The write email page */}

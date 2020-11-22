@@ -19,7 +19,7 @@ const allEmails = [
             from: "Leigh Lewis",
             subject: "How are you?",
             body: "Hello",
-            selected: true,
+            selected: false,
             page: 'inbox'
         },
         {

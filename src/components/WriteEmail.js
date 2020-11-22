@@ -2,9 +2,13 @@
 import React, {useState} from "react"
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
+/* eslint-disable */
 
 const WriteEmail = ({sendEmail, saveDraft, emails}) => {
+
+  const history = useHistory()
 
   let email
   if(emails){
@@ -21,20 +25,6 @@ const WriteEmail = ({sendEmail, saveDraft, emails}) => {
 
   return( 
       <div>
-      <header className="page-header">New Message</header>
-      <div className="textfieldContainer" >
-        <label className="label" >
-          <b>To:</b>
-        </label>
-        <input
-          type="text"
-          className="to"
-          value={to}
-          title="To"
-          placeholder="Enter your email recipient here"
-          onChange={event => setTo(event.target.value)}
-        />
-      </div>
       <div className="textfieldContainer" >
         <label className="label" >
           <b>CC:</b>
@@ -88,7 +78,15 @@ const WriteEmail = ({sendEmail, saveDraft, emails}) => {
         <button className="button" onClick = {() => sendEmail( { subject, to, bcc, cc, body } )} >
           Send
         </button>
-        <button className="button" onClick = {() => saveDraft( { subject, to, bcc, cc, body } )} >
+        <button 
+          className="button" 
+          onClick = {() => {
+            const id = email?.id
+            console.log(id);
+            saveDraft( { subject, to, bcc, cc, body, id} )
+            history.push('/drafts')
+          }} 
+          >
           Save Draft
         </button>
       </div>

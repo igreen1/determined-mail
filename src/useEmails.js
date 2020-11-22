@@ -4,15 +4,25 @@ import { useState } from 'react'
 export default (initialValue) => {
   const [emails, setEmails] = useState(initialValue)
 
+  const permaDeleteEmail = (key)=>{
+    setEmails(emails.filter((email) => email.id !== key))
+  }
+
   return {
     emails,
     setEmails,
 
-    grabPage: (page) => {
-        return emails.filter((email)=> email.page === page)
+    allSelected: (page) => {
+      console.log(emails.filter((email)=>email.page===page).filter((email)=>!email.selected))
+      console.log([] === emails.filter((email)=>email.page===page).filter((email)=>!email.selected))
+      return(emails.filter((email)=>email.page===page).filter((email)=>!email.selected).length === 0)
     },
 
-    deleteEmail: (key) => {
+    grabPage: (page) => {
+      return emails.filter((email)=> email.page === page)
+    },
+
+    moveToTrash: (key) => {
       //really just move to deleted page (perma delete is below)
       setEmails(emails.map((email) => {
         if(email.id===key){
@@ -21,9 +31,7 @@ export default (initialValue) => {
       }))
     },
 
-    permaDeleteEmail: (key) => {
-      setEmails(emails.filter((email) => email.id !== key))
-    },
+    permaDeleteEmail: permaDeleteEmail,
 
     selectEmail: (key) => {
       setEmails(
@@ -31,8 +39,18 @@ export default (initialValue) => {
           if (email.id === key) {
             email.selected = !email.selected
           }
+          return email
         })
       )
+    },
+
+    toggleSelectAll: (page, newState) => {
+      setEmails(emails.map((email)=>{
+        if(email.page === page){
+          email.selected = newState
+        }
+        return email
+      }))
     },
 
     selectedToSpam: () => {
@@ -69,8 +87,20 @@ export default (initialValue) => {
       let draftEmail = { ...newEmail }
       draftEmail.selected = false
       draftEmail.page = 'draft'
-      draftEmail.id = Date.now()
-      setEmails([...emails, draftEmail])
+      if(!draftEmail.id){
+        draftEmail.id = Date.now()
+        setEmails([...emails, draftEmail])
+      } else { 
+        setEmails(
+          emails.map((email)=>{
+            if(email.id === draftEmail.id){
+              email = {...draftEmail}
+            }
+            return email
+          })
+        )
+      }
+      
     },
   }
 }
