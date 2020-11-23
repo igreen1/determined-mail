@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 /* eslint-disable */
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -30,6 +30,9 @@ const App = () => {  // eslint-disable no-unused-vars
       saveDraft, grabPage, selectedToDeleted, toggleSelectAll,
       selectedToSpam, selectedToInbox, permaDeleteEmail} = useEmails(hardcodedEmails)
 
+  const [selectAllChecked, setSelectAllChecked] = useState(false)
+
+
   return (
     <Router>
     <div className='app'>
@@ -47,56 +50,106 @@ const App = () => {  // eslint-disable no-unused-vars
       <div className='email-viewport'>
         {/* The view email list pages */}
         <Route exact path="/">
-          <PageHeader 
-            title='Inbox'
-            pageName='inbox'
-            selectedToDeleted={selectedToDeleted}
-            selectedToSpam={selectedToSpam}
-            toggleSelectAll={toggleSelectAll}
-            allSelected={allSelected}
-          />
+          <header className="page-header">
+        {'Inbox'}
+        <input
+        className="select"
+        type="checkbox"
+        id="selectAll"
+        checked={(allSelected('inbox'))}
+        onChange={()=>{
+            const selected = !(allSelected('inbox'))
+            toggleSelectAll('inbox', selected)
+            setSelectAllChecked(selected)
+        }}/>{" "}
+        <button
+            className="discard-button"
+            onClick={() => {selectedToDeleted}}
+        >
+            Discard
+        </button>
+        <button
+            className="mark-spam-button"
+            onClick={()=>{selectedToSpam}}
+        >
+        Mark as Spam
+        </button>
+    </header>
           <EmailList 
             emails={grabPage('inbox')}
             deleteEmail={moveToTrash}
             selectEmail={selectEmail}/>
         </Route>
         <Route path='/spam'>
-        <PageHeader 
-            title='Spam'
-            pageName='spam'
-            selectedToDeleted={selectedToDeleted}
-            selectedToSpam={selectedToSpam}
-            toggleSelectAll={toggleSelectAll}
-            allSelected={allSelected}
-          />
+        <header className="page-header">
+        {'Spam'}
+        <input
+        className="select"
+        type="checkbox"
+        id="selectAll"
+        checked={(allSelected('spam'))}
+        onChange={()=>{
+            const selected = !(allSelected('spam'))
+            toggleSelectAll('spam', selected)
+            setSelectAllChecked(selected)
+        }}/>{" "}
+        <button
+            className="discard-button"
+            onClick={() => {selectedToDeleted}}
+        >
+            Discard
+        </button>
+    </header>
         <EmailList 
             emails={grabPage('spam')}
             deleteEmail={moveToTrash}
             selectEmail={selectEmail}/>
         </Route>
         <Route path='/trash'>
-        <PageHeader 
-            title='Trash'
-            pageName='deleted'
-            selectedToDeleted={selectedToDeleted}
-            selectedToSpam={selectedToSpam}
-            toggleSelectAll={toggleSelectAll}
-            allSelected={allSelected}
-          />
+        <header className="page-header">
+        {'Trash'}
+        <input
+        className="select"
+        type="checkbox"
+        id="selectAll"
+        checked={(allSelected('deleted'))}
+        onChange={()=>{
+            const selected = !(allSelected('deleted'))
+            toggleSelectAll('deleted', selected)
+            setSelectAllChecked(selected)
+        }}/>{" "}
+        <button
+            className="discard-button"
+            onClick={() => {permaDeleteEmail}}
+        >
+            Discard
+        </button>
+    </header>
         <EmailList 
             emails={grabPage('deleted')}
             deleteEmail={permaDeleteEmail}
             selectEmail={selectEmail}/>
         </Route>
         <Route path='/drafts'>
-        <PageHeader 
-            title="Drafts"
-            pageName='drafts'
-            selectedToDeleted={selectedToDeleted}
-            selectedToSpam={selectedToSpam}
-            toggleSelectAll={toggleSelectAll}
-            allSelected={allSelected}
-          />
+        <header className="page-header">
+        {'Saved Drafts'}
+        <input
+        className="select"
+        type="checkbox"
+        id="selectAll"
+        checked={(allSelected('draft'))}
+        onChange={()=>{
+            const selected = !(allSelected('draft'))
+            toggleSelectAll('draft', selected)
+            setSelectAllChecked(selected)
+        }}/>{" "}
+        <button
+            className="discard-button"
+            onClick={() => {permaDeleteEmail}}
+        >
+            Discard
+        </button>
+    </header>
         <EmailList 
             emails={grabPage('draft')}
             deleteEmail={permaDeleteEmail}
@@ -104,6 +157,9 @@ const App = () => {  // eslint-disable no-unused-vars
         </Route>
           {/* The write email page */}
         <Route exact path='/new'>
+        <header className="page-header">
+        {'New Message'}
+    </header>
           <WriteEmail
             sendEmail={(newEmail) => console.log(newEmail)}
             saveDraft={saveDraft}
