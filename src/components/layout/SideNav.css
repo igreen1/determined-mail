@@ -1,0 +1,14 @@
+.root {
+  width: '100%';
+  max-width: 200;
+  background-color: theme.palette.background.paper;
+}
+
+.dividerColor {
+  background-color: '#aaaaaa';
+}
+
+.selectedItemStyle {
+  color: #fb6949;
+  background-color: #c9fdff;
+}

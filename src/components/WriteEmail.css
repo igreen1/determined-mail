@@ -1,0 +1,71 @@
+.input {
+  margin-left: 201px;
+  margin-top: -257px;
+  background-color: #fff;
+  height: 3vh;
+  border: 0px 0px 4px 4px;
+  display: inline-block;
+  border: 5px solid;
+  border-color: #fb6949;
+  font-family: arial;
+  font-size: 25px;
+  color: #000;
+}
+
+.label {
+  margin-left: 201px;
+  margin-top: -257px;
+  background-color: #fb6949;
+  height: '3vh';
+  border-radius: 4px 4px 0px 0px;
+  font-family: 'arial';
+  font-size: 25px;
+  color: #fff;
+  padding: 10px 0px 5px 10px;
+}
+
+.draftEmail {
+  margin-left: 201px;
+  margin-top: -257px;
+  resize: none;
+  background-color: #fff;
+  height: 50vh;
+  display: inline-block;
+  border-radius: 0px 0px 10px 10px;
+  font-family: arial;
+  font-size: 25px;
+  border: 5px solid;
+  border-color: #fb6949;
+  color: #000;
+}
+
+.button {
+  margin-left: 201px;
+  margin-top: -257px;
+  background-color: #fb6949;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 25px;
+  width: 10vw;
+  height: 5vh;
+  text-align: center;
+  margin: 5px;
+  border: none;
+}
+
+.buttonContainer {
+  margin-left: 201px;
+  margin-top: -257px;
+  display: flex;
+  flex-direction: 'row-reverse';
+  width: 80vw;
+  margin-top: 5px;
+}
+
+.container {
+  margin-left: 201px;
+  margin-top: -257px;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
