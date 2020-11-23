@@ -1,30 +1,37 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 
+/* eslint-disable */
+const PageHeader = ({title, pageName, allSelected, toggleSelectAll, selectedToDeleted, selectedToSpam}) => {
 
+    const [selectAllChecked, setSelectAllChecked] = useState(false)
 
-const PageHeader = ({pageName}) => {
-
+    // if(pageName == )
+    // const spamButton = ();
+    // const discardButton = ();
 
     return(
     <header className="page-header">
-        {pageName}
+        {title}
         <input
         className="select"
         type="checkbox"
         id="selectAll"
-        checked={this.state.allSelected}
-        onClick={this.toggleSelectAllInInbox}
-        />{" "}
+        checked={(allSelected(pageName))}
+        onChange={()=>{
+            const selected = !(allSelected(pageName))
+            toggleSelectAll(pageName, selected)
+            setSelectAllChecked(selected)
+        }}/>{" "}
         <button
             className="discard-button"
-            onClick={this.removeIfSelected}
+            onClick={() => {selectedToDeleted}}
         >
             Discard
         </button>
         <button
             className="mark-spam-button"
-            onClick={this.markSpamIfSelected}
+            onClick={()=>{selectedToSpam}}
         >
         Mark as Spam
         </button>
@@ -34,7 +41,11 @@ const PageHeader = ({pageName}) => {
 }
 
 PageHeader.propTypes = {
-    pageName: PropTypes.string
+    title:PropTypes.string.isRequired,
+    pageName: PropTypes.string.isRequired,
+    selectedToDeleted: PropTypes.func.isRequired,
+    selectedToSpam: PropTypes.func.isRequired,
+    toggleSelectAll:  PropTypes.func.isRequired,
 }
 
 export default PageHeader
