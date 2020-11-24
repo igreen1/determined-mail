@@ -1,6 +1,6 @@
 .SideNav {
   display: flex;
-  width: 40vw;
+  width: 42vw;
 }
 
 .container {
@@ -41,6 +41,7 @@
   font-size: 30px;
   padding: 20px;
   padding-bottom: 40px;
+  font-size: 5vh;
   background-color: #fb6949;
   color: white;
   border: 1px #aaaaaa solid;
@@ -85,9 +86,4 @@
   text-align: left;
   margin-left: 2vw;
   margin-top: 20px;
-}
-
-.savedDrafts {
-  font-size: 5vh;
-  text-align: center;
 }
