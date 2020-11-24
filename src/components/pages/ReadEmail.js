@@ -10,9 +10,10 @@ const ReadEmail = ({ emails }) => {
     <div>
       {' '}
       {/* <profile?> */}
-      <h2 alt={`From: ${email?.from}`}>From: {email?.from}</h2>
-      <h2 alt={`Subject: ${email?.subject}`}>Subject: {email?.subject}</h2>
-      <textarea className="emailBody" alt={`${email?.body}`}>{email?.body}</textarea>
+
+      <h2 aria-label={`From: ${email?.from}`}>From: {email?.from}</h2>
+      <h2 aria-label={`Subject: ${email?.subject}`}>Subject: {email?.subject}</h2>
+      <textarea className="emailBody" aria-label={`${email?.body}`}>{email?.body}</textarea>
     </div>
 
   )
