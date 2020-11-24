@@ -13,9 +13,8 @@ export default (initialValue) => {
     setEmails,
 
     allSelected: (page) => {
-      console.log(emails.filter((email)=>email.page===page).filter((email)=>!email.selected))
-      console.log([] === emails.filter((email)=>email.page===page).filter((email)=>!email.selected))
-      return(emails.filter((email)=>email.page===page).filter((email)=>!email.selected).length === 0)
+      if(emails.filter((email) => email.page === page).length ===0) return false;
+      return(emails.filter((email)=> (!email.selected) && (email.page===page)).length === 0)
     },
 
     grabPage: (page) => {
@@ -27,11 +26,17 @@ export default (initialValue) => {
       setEmails(emails.map((email) => {
         if(email.id===key){
           email.page = 'deleted'
+          email.selected = false
         }
+        return email;
       }))
     },
 
     permaDeleteEmail: permaDeleteEmail,
+
+    permaDeleteSelected: () => {
+      setEmails(emails.filter((email) => email.selected !== true))
+    },
 
     selectEmail: (key) => {
       setEmails(
@@ -58,17 +63,21 @@ export default (initialValue) => {
         emails.map((email) => {
           if (email.selected) {
             email.page = 'spam'
+            email.selected = false
           }
+          return email;
         })
       )
     },
 
-    selectedToDeleted: () => {
+    selectedToTrash: () => {
       setEmails(
         emails.map((email) => {
           if (email.selected) {
             email.page = 'deleted'
+            email.selected = false
           }
+          return email;
         })
       )
     },
@@ -78,7 +87,9 @@ export default (initialValue) => {
         emails.map((email) => {
           if (email.selected) {
             email.page = 'inbox'
+            email.selected = false
           }
+          return email;
         })
       )
     },
