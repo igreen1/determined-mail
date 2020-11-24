@@ -13,8 +13,8 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
     //draft page, display 'to' not 'from'
     emailInfo = (
       <Link className="link" to={`/new/${email?.id}`}>
-        <div className="to" alt={`To: ${email?.to}`}>To: {email?.to}</div>
-        <div className="subject" alt={`subject: ${email?.subject}`}>Subject: {email?.subject}</div>
+        <div className="to" aria-label={`To: ${email?.to}`}>To: {email?.to}</div>
+        <div className="subject" aria-label={`subject: ${email?.subject}`}>Subject: {email?.subject}</div>
       </Link>
     )
   } else {
@@ -22,8 +22,8 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
     emailInfo = (
       <Link className="link" to={`/email/${email.id}`}>
         <div className="profile">{email.profile}</div>
-        <div className="from" alt={`From: ${email.from}`}>From: {email.from}</div>
-        <div className="subject" alt={`subject: ${email.subject}`}>Subject: {email.subject}</div>
+        <div className="from" aria-label={`From: ${email.from}`}>From: {email.from}</div>
+        <div className="subject" aria-label={`subject: ${email.subject}`}>Subject: {email.subject}</div>
       </Link>
     )
   }
@@ -33,7 +33,7 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
       <div>
         <div className="email">
           <input
-            alt="Checkbox to select this email"
+            aria-label="Checkbox to select this email"
             className="select"
             type="checkbox"
             checked={!!email.selected}
@@ -43,7 +43,7 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
           />{' '}
           {emailInfo}
           <BsFillTrashFill
-            alt="Move to trash"
+            aria-label="Move to trash"
             className="delete"
             size={32}
             onClick={() => {

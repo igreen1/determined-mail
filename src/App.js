@@ -46,11 +46,11 @@ const App = () => {
 
   return (
     <Router>
-      <div className="app" alt="Welcome to Determined Mail">
+      <div className="app" aria-label="Welcome to Determined Mail">
         <div className="header">
           <header className="header">
             <h1>Determined Mail</h1>
-            <div className="logo" alt="Determined Mail logo, magnifying glass with letter envelope inside">
+            <div className="logo" aria-label="Determined Mail logo, magnifying glass with letter envelope inside">
               <img src={logo} alt="logo" height="80" width="80" />
             </div>
           </header>
@@ -62,10 +62,10 @@ const App = () => {
           {/* The view email list pages */}
           <Route exact path="/">
             <div className="EmailList">
-              <header className="page-header" alt="Main Inbox">
+              <header className="page-header" aria-label="Main Inbox">
                 {'Inbox'}
                 <input
-                  alt="Select all emails in main inbox"
+                  aria-label="Select all emails in main inbox"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -81,7 +81,7 @@ const App = () => {
                   onClick={() => {
                     selectedToTrash()
                   }}
-                  alt="Move to trash"
+                  aria-label="Move to trash"
                 >
                   Trash
                 </button>
@@ -90,7 +90,7 @@ const App = () => {
                   onClick={() => {
                     selectedToSpam()
                   }}
-                  alt="Move to spam"
+                  aria-label="Move to spam"
                 >
                   Move to Spam
                 </button>
@@ -105,10 +105,10 @@ const App = () => {
           </Route>
           <Route path="/spam">
             <div className="EmailList">
-              <header className="page-header" alt="Spam">
+              <header className="page-header" aria-label="Spam">
                 {'Spam'}
                 <input
-                  alt="Select all emails in spam"
+                  aria-label="Select all emails in spam"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -124,7 +124,7 @@ const App = () => {
                   onClick={() => {
                     selectedToTrash()
                   }}
-                  alt="Move to trash"
+                  aria-label="Move to trash"
                 >
                   Trash
                 </button>
@@ -138,10 +138,10 @@ const App = () => {
           </Route>
           <Route path="/trash">
             <div className="EmailList">
-              <header className="page-header" alt="Trash">
+              <header className="page-header" aria-label="Trash">
                 {'Trash'}
                 <input
-                  alt="Select all emails in trash"
+                  aria-label="Select all emails in trash"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -157,7 +157,7 @@ const App = () => {
                   onClick={() => {
                     permaDeleteEmail
                   }}
-                  alt="Permanently delete"
+                  aria-label="Permanently delete"
                 >
                   Trash
                 </button>
@@ -171,10 +171,10 @@ const App = () => {
           </Route>
           <Route path="/drafts">
             <div className="EmailList">
-              <header className="page-header" alt="Drafts">
+              <header className="page-header" aria-label="Drafts">
                 <div className="savedDrafts"> Saved Drafts</div>
                 <input
-                  alt="Select all emails in drafts"
+                  aria-label="Select all emails in drafts"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -190,7 +190,7 @@ const App = () => {
                   onClick={() => {
                     permaDeleteEmail
                   }}
-                  alt="Permanently delete"
+                  aria-label="Permanently delete"
                 >
                   Trash
                 </button>
@@ -205,7 +205,7 @@ const App = () => {
           {/* The write email page */}
           <Route exact path="/new">
             <div className="EmailList">
-              <header className="page-header" alt="Write an email">{'New Message'}</header>
+              <header className="page-header" aria-label="Write an email">{'New Message'}</header>
             </div>
             <WriteEmail
               sendEmail={(newEmail) => console.log(newEmail)}
@@ -214,7 +214,7 @@ const App = () => {
           </Route>
           <Route path="/new/:id">
             <div className="EmailList">
-              <header className="page-header">{'Edit Draft'}</header>
+              <header className="page-header" aria-label="Edit draft">{'Edit Draft'}</header>
             </div>
 
             <WriteEmail
