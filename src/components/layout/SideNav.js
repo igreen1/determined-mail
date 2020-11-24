@@ -18,7 +18,7 @@ import { Link } from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 200,
+    maxWidth: 250,
     backgroundColor: theme.palette.background.paper,
   },
   dividerColor: {
@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     color: "#fb6949",
     backgroundColor: "#c9fdff",
   },
+  listItemText: {
+    fontSize: '20px',
+  }
 }))
 // const headerStyle = {
 //   background: "#c9fdff",
@@ -48,13 +51,6 @@ function SideNav() {
 
   return (
     <React.Fragment>
-      {/* <header className="header" style={headerStyle}>
-        <h1>Determined Mail</h1>
-
-        <div className="logo">
-          <img src={logo} alt="logo" height="80" width="80" />
-        </div>
-      </header> */}
       <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
           <Divider className={classes.dividerColor} />
@@ -69,7 +65,7 @@ function SideNav() {
             <ListItemIcon>
               <EditIcon />
             </ListItemIcon>
-            <ListItemText primary="NewMessage" />
+            <ListItemText classes={{primary:classes.listItemText}} primary="NewMessage" />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -83,7 +79,7 @@ function SideNav() {
             <ListItemIcon>
               <EmailIcon />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText classes={{primary:classes.listItemText}} primary="Inbox" />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -97,7 +93,7 @@ function SideNav() {
             <ListItemIcon>
               <DeleteIcon />
             </ListItemIcon>
-            <ListItemText primary="Trash" />
+            <ListItemText classes={{primary:classes.listItemText}} primary="Trash" />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -111,7 +107,7 @@ function SideNav() {
             <ListItemIcon>
               <ErrorIcon />
             </ListItemIcon>
-            <ListItemText primary="Spam" />
+            <ListItemText classes={{primary:classes.listItemText}} primary="Spam" />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -125,7 +121,7 @@ function SideNav() {
             <ListItemIcon>
               <SaveIcon />
             </ListItemIcon>
-            <ListItemText primary="Saved Drafts" />
+            <ListItemText classes={{primary:classes.listItemText}} primary="Saved Drafts" />
           </ListItem>
           <Divider className={classes.dividerColor} />
         </List>
