@@ -1,17 +1,18 @@
-import React, { component } from "react"
+import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import Divider from "@material-ui/core/Divider"
-import InboxIcon from "@material-ui/icons/Inbox"
-import DraftsIcon from "@material-ui/icons/Drafts"
+// import InboxIcon from "@material-ui/icons/Inbox"
+// import DraftsIcon from "@material-ui/icons/Drafts"
 import EmailIcon from "@material-ui/icons/Email"
 import DeleteIcon from "@material-ui/icons/Delete"
 import ErrorIcon from "@material-ui/icons/Error"
 import EditIcon from "@material-ui/icons/Edit"
-import logo from "./logo.png"
+import SaveIcon from '@material-ui/icons/Save';
+// import logo from "./logo.png"
 import { Link } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
@@ -28,14 +29,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#c9fdff",
   },
 }))
-const headerStyle = {
-  background: "#c9fdff",
-  color: "#000000",
-  textAlign: "center",
-  padding: "1px",
-  fontFamily: "Ariel, sans-serif",
-  border: "1px solid #aaaaaa",
-}
+// const headerStyle = {
+//   background: "#c9fdff",
+//   color: "#000000",
+//   textAlign: "center",
+//   padding: "1px",
+//   fontFamily: "Ariel, sans-serif",
+//   border: "1px solid #aaaaaa",
+// }
 
 function SideNav() {
   const classes = useStyles()
@@ -47,19 +48,19 @@ function SideNav() {
 
   return (
     <React.Fragment>
-      <header className="header" style={headerStyle}>
+      {/* <header className="header" style={headerStyle}>
         <h1>Determined Mail</h1>
 
         <div className="logo">
           <img src={logo} alt="logo" height="80" width="80" />
         </div>
-      </header>
+      </header> */}
       <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
           <Divider className={classes.dividerColor} />
           <ListItem
             component={Link}
-            to="/newMessage"
+            to="/new"
             button
             classes={{ selected: classes.selectedItemStyle }}
             selected={selectedIndex === 4}
@@ -87,7 +88,7 @@ function SideNav() {
           <Divider className={classes.dividerColor} />
           <ListItem
             component={Link}
-            to="/deleted"
+            to="/trash"
             classes={{ selected: classes.selectedItemStyle }}
             button
             selected={selectedIndex === 3}
@@ -96,7 +97,7 @@ function SideNav() {
             <ListItemIcon>
               <DeleteIcon />
             </ListItemIcon>
-            <ListItemText primary="Deleted" />
+            <ListItemText primary="Trash" />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -111,6 +112,20 @@ function SideNav() {
               <ErrorIcon />
             </ListItemIcon>
             <ListItemText primary="Spam" />
+          </ListItem>
+          <Divider className={classes.dividerColor} />
+          <ListItem
+            component={Link}
+            to="/drafts"
+            classes={{ selected: classes.selectedItemStyle }}
+            button
+            selected={selectedIndex === 5}
+            onClick={(event) => handleListItemClick(event, 5)}
+          >
+            <ListItemIcon>
+              <SaveIcon />
+            </ListItemIcon>
+            <ListItemText primary="Saved Drafts" />
           </ListItem>
           <Divider className={classes.dividerColor} />
         </List>

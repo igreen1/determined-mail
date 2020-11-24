@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 /* eslint-disable */
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -17,79 +17,208 @@ import hardcodedEmails from './hardcodedEmails'
 import EmailList from './components/EmailList'
 import WriteEmail from './components/WriteEmail'
 import useEmails from './useEmails'
+import logo from './components/layout/logo.png'
+import PageHeader from './components/PageHeader'
 
 import './App.css'
+import SideNav from './components/layout/SideNav'
 
-const App = () => {  // eslint-disable no-unused-vars 
+const App = () => {
+  // eslint-disable no-unused-vars
 
+  // because we haven't used redux,, little ugly
+  const {
+    emails,
+    moveToTrash,
+    selectEmail,
+    allSelected,
+    saveDraft,
+    grabPage,
+    selectedToDeleted,
+    toggleSelectAll,
+    selectedToSpam,
+    selectedToInbox,
+    permaDeleteEmail,
+  } = useEmails(hardcodedEmails)
 
-  const {emails, setEmails, deleteEmail, selectEmail, 
-      saveDraft, grabPage, selectedToDeleted, 
-      selectedToSpam, selectedToInbox} = useEmails(hardcodedEmails)
-
-  const spam = (
-    <EmailList 
-      emails={grabPage('spam')}
-      deleteEmail={deleteEmail}
-      selectEmail={selectEmail}
-    />
-  )
+  const [selectAllChecked, setSelectAllChecked] = useState(false)
 
   return (
     <Router>
-    <div className='app'>
-      <div className='header'>
-        {/* todo */}
-      </div>
-      <div className='sidebar'>
-        {/* todo */}
-      </div>
-      <div className='email-viewport'>
-        {/* The view email list pages */}
-        <Route exact path="/">
-          <EmailList 
-            emails={grabPage('inbox')}
-            deleteEmail={deleteEmail}
-            selectEmail={selectEmail}/>
-        </Route>
-        <Route path='/spam'>
-        <EmailList 
-            emails={grabPage('spam')}
-            deleteEmail={deleteEmail}
-            selectEmail={selectEmail}/>
-        </Route>
-        <Route path='/trash'>
-        <EmailList 
-            emails={grabPage('deleted')}
-            deleteEmail={deleteEmail}
-            selectEmail={selectEmail}/>
-        </Route>
-        <Route path='/drafts'>
-        <EmailList 
-            emails={grabPage('draft')}
-            deleteEmail={deleteEmail}
-            selectEmail={selectEmail}/>
-        </Route>
+      <div className="app">
+        <div className="header">
+          <header className="header">
+            <h1>Determined Mail</h1>
+            <div className="logo">
+              <img src={logo} alt="logo" height="80" width="80" />
+            </div>
+          </header>
+        </div>
+        <div className="sidebar">
+          <SideNav />
+        </div>
+        <div className="email-viewport">
+          {/* The view email list pages */}
+          <Route exact path="/">
+            <div className="EmailList">
+              <header className="page-header">
+                {'Inbox'}
+                <p className="selectAll">Select All</p>
+                <input
+                  className="select"
+                  type="checkbox"
+                  id="selectAll"
+                  checked={allSelected('inbox')}
+                  onChange={() => {
+                    const selected = !allSelected('inbox')
+                    toggleSelectAll('inbox', selected)
+                    setSelectAllChecked(selected)
+                  }}
+                />{' '}
+                <button
+                  className="discard-button"
+                  onClick={() => {
+                    selectedToDeleted
+                  }}
+                >
+                  Discard
+                </button>
+                <button
+                  className="mark-spam-button"
+                  onClick={() => {
+                    selectedToSpam
+                  }}
+                >
+                  Mark as Spam
+                </button>
+              </header>
+
+              <EmailList
+                emails={grabPage('inbox')}
+                deleteEmail={moveToTrash}
+                selectEmail={selectEmail}
+              />
+            </div>
+          </Route>
+          <Route path="/spam">
+            <div className="EmailList">
+              <header className="page-header">
+                {'Spam'}
+                <p className="selectAll">Select All</p>
+                <input
+                  className="select"
+                  type="checkbox"
+                  id="selectAll"
+                  checked={allSelected('spam')}
+                  onChange={() => {
+                    const selected = !allSelected('spam')
+                    toggleSelectAll('spam', selected)
+                    setSelectAllChecked(selected)
+                  }}
+                />{' '}
+                <button
+                  className="discard-button"
+                  onClick={() => {
+                    selectedToDeleted
+                  }}
+                >
+                  Discard
+                </button>
+              </header>
+              <EmailList
+                emails={grabPage('spam')}
+                deleteEmail={moveToTrash}
+                selectEmail={selectEmail}
+              />
+            </div>
+          </Route>
+          <Route path="/trash">
+            <div className="EmailList">
+              <header className="page-header">
+                {'Trash'}
+                <p className="selectAll">Select All</p>
+                <input
+                  className="select"
+                  type="checkbox"
+                  id="selectAll"
+                  checked={allSelected('deleted')}
+                  onChange={() => {
+                    const selected = !allSelected('deleted')
+                    toggleSelectAll('deleted', selected)
+                    setSelectAllChecked(selected)
+                  }}
+                />{' '}
+                <button
+                  className="discard-button"
+                  onClick={() => {
+                    permaDeleteEmail
+                  }}
+                >
+                  Discard
+                </button>
+              </header>
+              <EmailList
+                emails={grabPage('deleted')}
+                deleteEmail={permaDeleteEmail}
+                selectEmail={selectEmail}
+              />
+            </div>
+          </Route>
+          <Route path="/drafts">
+            <div className="EmailList">
+              <header className="page-header">
+                <div className="savedDrafts">Saved Drafts</div>
+                <input
+                  className="select"
+                  type="checkbox"
+                  id="selectAll"
+                  checked={allSelected('draft')}
+                  onChange={() => {
+                    const selected = !allSelected('draft')
+                    toggleSelectAll('draft', selected)
+                    setSelectAllChecked(selected)
+                  }}
+                />
+                <div className="selectAll-label"> Select All</div>
+                <button
+                  className="discard-button"
+                  onClick={() => {
+                    permaDeleteEmail
+                  }}
+                >
+                  Discard
+                </button>
+              </header>
+              <EmailList
+                emails={grabPage('draft')}
+                deleteEmail={permaDeleteEmail}
+                selectEmail={selectEmail}
+              />
+            </div>
+          </Route>
           {/* The write email page */}
-        <Route exact path='/new'>
-          <WriteEmail
-            sendEmail={(newEmail) => console.log(newEmail)}
-            saveDraft={saveDraft}
+          <Route exact path="/new">
+            <div className="EmailList">
+              <header className="page-header">{'New Message'}</header>
+            </div>
+            <WriteEmail
+              sendEmail={(newEmail) => console.log(newEmail)}
+              saveDraft={saveDraft}
             />
-        </Route>
-        <Route path='/new/:id'>
-          <WriteEmail 
+          </Route>
+          <Route path="/new/:id">
+            <WriteEmail
               sendEmail={(newEmail) => console.log(newEmail)}
               saveDraft={saveDraft}
               emails={emails}
             />
-        </Route>
+          </Route>
+        </div>
       </div>
-    </div>
     </Router>
   )
 
-/*
+  /*
   return (
     <Router>
       <WriteEmail 
@@ -106,9 +235,6 @@ const App = () => {  // eslint-disable no-unused-vars
   )
   */
 }
-
-
-
 
 export default App
 //below is the old code

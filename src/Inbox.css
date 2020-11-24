@@ -4,12 +4,9 @@
   justify-content: space-between;
 }
 
-.EmailList {
-  display: flex;
-  flex-direction: column;
-  align-items: top;
+.inbox {
   margin-left: 201px;
-  margin-top: -257px;
+  margin-top: -205px;
   font-size: 20px;
 }
 
@@ -21,9 +18,28 @@
   height: 20px;
 }
 
+.profile {
+  float: left;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 50px;
+}
+
+.from {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
 .link {
   text-decoration: none;
   color: black;
+}
+
+.subject {
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
 }
 
 .del {
@@ -37,7 +53,6 @@
   background-color: #fb6949;
   color: white;
   border: 1px #aaaaaa solid;
-  text-align: center;
 }
 
 .logo {
@@ -59,26 +74,4 @@
   float: right;
   padding: 15px;
   cursor: pointer;
-}
-
-.header {
-  background: #c9fdff;
-  color: #000000;
-  text-align: center;
-  padding: 1px;
-  font-family: Ariel, sans-serif;
-  border: 1px solid #aaaaaa;
-}
-
-.selectAll-label {
-  font-size: 3vh;
-  margin-left: 50px;
-  text-align: left;
-  margin-left: 2vw;
-  margin-top: 20px;
-}
-
-.savedDrafts {
-  font-size: 5vh;
-  text-align: center;
 }

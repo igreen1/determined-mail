@@ -2,6 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { BsFillTrashFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+<<<<<<< HEAD
+=======
+import './EmailItem.css'
+>>>>>>> main
 /* eslint-disable */
 
 const EmailItem = ({ email, deleteEmail, selectEmail }) => {
@@ -10,7 +14,6 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
     //draft page, display 'to' not 'from'
     emailInfo = (
       <Link className="link" to={`/new/${email?.id}`}>
-        <div className="profile">{email?.profile}</div>
         <div className="to">To: {email?.to}</div>
         <div className="subject">Subject: {email?.subject}</div>
       </Link>
@@ -25,6 +28,7 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
       </Link>
     )
   }
+
   return (
     <React.Fragment>
       <div>
@@ -32,9 +36,9 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
           <input
             className="select"
             type="checkbox"
-            defaultChecked={email.selected}
-            onClick={() => {
-              selectEmail
+            checked={!!email.selected}
+            onClick={(event) => {
+              selectEmail(email.id)
             }}
           />{' '}
           {emailInfo}
