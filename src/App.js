@@ -88,7 +88,7 @@ const App = () => {
                 <button
                   className="mark-spam-button"
                   onClick={() => {
-                    selectedToSpam
+                    selectedToSpam()
                   }}
                   alt="Move to spam"
                 >
