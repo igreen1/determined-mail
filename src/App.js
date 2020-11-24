@@ -45,11 +45,11 @@ const App = () => {
 
   return (
     <Router>
-      <div className="app">
+      <div className="app" alt="Welcome to Determined Mail">
         <div className="header">
           <header className="header">
             <h1>Determined Mail</h1>
-            <div className="logo">
+            <div className="logo" alt="Determined Mail logo, magnifying glass with letter envelope inside">
               <img src={logo} alt="logo" height="80" width="80" />
             </div>
           </header>
@@ -61,10 +61,10 @@ const App = () => {
           {/* The view email list pages */}
           <Route exact path="/">
             <div className="EmailList">
-              <header className="page-header">
+              <header className="page-header" alt="Main Inbox">
                 {'Inbox'}
-                <p className="selectAll">Select All</p>
                 <input
+                  alt="Select all emails in main inbox"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -80,16 +80,18 @@ const App = () => {
                   onClick={() => {
                     selectedToDeleted
                   }}
+                  alt="Move to trash"
                 >
-                  Discard
+                  Trash
                 </button>
                 <button
                   className="mark-spam-button"
                   onClick={() => {
                     selectedToSpam
                   }}
+                  alt="Move to spam"
                 >
-                  Mark as Spam
+                  Move to Spam
                 </button>
               </header>
 
@@ -102,10 +104,10 @@ const App = () => {
           </Route>
           <Route path="/spam">
             <div className="EmailList">
-              <header className="page-header">
+              <header className="page-header" alt="Spam">
                 {'Spam'}
-                <p className="selectAll">Select All</p>
                 <input
+                  alt="Select all emails in spam"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -121,8 +123,9 @@ const App = () => {
                   onClick={() => {
                     selectedToDeleted
                   }}
+                  alt="Move to trash"
                 >
-                  Discard
+                  Trash
                 </button>
               </header>
               <EmailList
@@ -134,10 +137,10 @@ const App = () => {
           </Route>
           <Route path="/trash">
             <div className="EmailList">
-              <header className="page-header">
+              <header className="page-header" alt="Trash">
                 {'Trash'}
-                <p className="selectAll">Select All</p>
                 <input
+                  alt="Select all emails in trash"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -153,8 +156,9 @@ const App = () => {
                   onClick={() => {
                     permaDeleteEmail
                   }}
+                  alt="Permanently delete"
                 >
-                  Discard
+                  Trash
                 </button>
               </header>
               <EmailList
@@ -166,9 +170,10 @@ const App = () => {
           </Route>
           <Route path="/drafts">
             <div className="EmailList">
-              <header className="page-header">
-                <div className="savedDrafts">Saved Drafts</div>
+              <header className="page-header" alt="Drafts">
+                <div className="savedDrafts"> Saved Drafts</div>
                 <input
+                  alt="Select all emails in drafts"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -179,14 +184,14 @@ const App = () => {
                     setSelectAllChecked(selected)
                   }}
                 />
-                <div className="selectAll-label"> Select All</div>
                 <button
                   className="discard-button"
                   onClick={() => {
                     permaDeleteEmail
                   }}
+                  alt="Permanently delete"
                 >
-                  Discard
+                  Trash
                 </button>
               </header>
               <EmailList
@@ -199,7 +204,7 @@ const App = () => {
           {/* The write email page */}
           <Route exact path="/new">
             <div className="EmailList">
-              <header className="page-header">{'New Message'}</header>
+              <header className="page-header" alt="Write an email">{'New Message'}</header>
             </div>
             <WriteEmail
               sendEmail={(newEmail) => console.log(newEmail)}

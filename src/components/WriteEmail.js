@@ -24,7 +24,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
   return (
     <div>
       <div className="textfieldContainer">
-        <label className="label">
+        <label className="label" alt="Enter email recipient here">
           <b>To:</b>
         </label>
         <input
@@ -36,7 +36,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         />
       </div>
       <div className="textfieldContainer">
-        <label className="label">
+        <label className="label" alt="Enter CC, carbon copy, recipient here">
           <b>CC:</b>
         </label>
         <input
@@ -48,7 +48,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         />
       </div>
       <div className="textfieldContainer">
-        <label className="label">
+        <label className="label" alt="Enter BCC, blind carbon copy, recipient here">
           <b>BCC:</b>
         </label>
         <input
@@ -60,7 +60,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         />
       </div>
       <div className="textfieldContainer">
-        <label className="label">
+        <label className="label" alt="Subject of email">
           <b>Subject:</b>
         </label>
         <input
@@ -73,7 +73,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         />
       </div>
       <div className="textfieldContainer">
-        <label className="label">
+        <label className="label" alt="Write your email here">
           <b>Draft Email</b>
         </label>
         <textarea
@@ -86,12 +86,14 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
       </div>
       <div className="buttonContainer">
         <button
+          alt="Send email"
           className="button"
           onClick={() => sendEmail({ subject, to, bcc, cc, body })}
         >
           Send
         </button>
         <button
+          alt="Save email as a draft"
           className="button"
           onClick={() => {
             const id = email?.id

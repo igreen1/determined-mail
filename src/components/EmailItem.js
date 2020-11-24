@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { BsFillTrashFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-<<<<<<< HEAD
-=======
+
 import './EmailItem.css'
->>>>>>> main
+
 /* eslint-disable */
 
 const EmailItem = ({ email, deleteEmail, selectEmail }) => {
@@ -23,7 +22,7 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
     emailInfo = (
       <Link className="link" to={`/email/${email.id}`}>
         <div className="profile">{email.profile}</div>
-        <div className="from">From: {email.from}</div>
+        <div className="from" alt={`From: ${email.from}`}>From: {email.from}</div>
         <div className="subject">Subject: {email.subject}</div>
       </Link>
     )
