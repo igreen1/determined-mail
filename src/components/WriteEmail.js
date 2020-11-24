@@ -29,10 +29,10 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         </label>
         <input
           type="text"
-          className="To"
+          className="input"
           value={to}
           placeholder="Enter your email recipient here"
-          onChange={(event) => setCC(event.target.value)}
+          onChange={(event) => setTo(event.target.value)}
         />
       </div>
       <div className="textfieldContainer">
@@ -41,7 +41,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         </label>
         <input
           type="text"
-          className="CC"
+          className="input"
           value={cc}
           placeholder="Enter your CC recipient here"
           onChange={(event) => setCC(event.target.value)}
@@ -53,7 +53,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         </label>
         <input
           type="text"
-          className="BCC"
+          className="input"
           value={bcc}
           onChange={(event) => setBCC(event.target.value)}
           placeholder="Enter your BCC recipient here"
@@ -66,7 +66,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         <input
           type="text"
           className="Subject"
-          title="Subject"
+          className="input"
           value={subject}
           placeholder="Enter subject of email here"
           onChange={(event) => setSubject(event.target.value)}

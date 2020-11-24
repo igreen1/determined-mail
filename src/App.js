@@ -19,6 +19,7 @@ import WriteEmail from './components/WriteEmail'
 import useEmails from './useEmails'
 import logo from './components/layout/logo.png'
 import PageHeader from './components/PageHeader'
+import ReadEmail from './components/pages/ReadEmail.js'
 
 import './App.css'
 import SideNav from './components/layout/SideNav'
@@ -54,7 +55,7 @@ const App = () => {
             </div>
           </header>
         </div>
-        <div className="sidebar">
+        <div className="SideNav">
           <SideNav />
         </div>
         <div className="email-viewport">
@@ -212,11 +213,18 @@ const App = () => {
             />
           </Route>
           <Route path="/new/:id">
+            <div className="EmailList">
+              <header className="page-header">{'Edit Draft'}</header>
+            </div>
+
             <WriteEmail
               sendEmail={(newEmail) => console.log(newEmail)}
               saveDraft={saveDraft}
               emails={emails}
             />
+          </Route>
+          <Route path="/email/:id">
+            <ReadEmail emails={emails} />
           </Route>
         </div>
       </div>

@@ -1,32 +1,34 @@
-import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemIcon from "@material-ui/core/ListItemIcon"
-import ListItemText from "@material-ui/core/ListItemText"
-import Divider from "@material-ui/core/Divider"
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Divider from '@material-ui/core/Divider'
 // import InboxIcon from "@material-ui/icons/Inbox"
 // import DraftsIcon from "@material-ui/icons/Drafts"
-import EmailIcon from "@material-ui/icons/Email"
-import DeleteIcon from "@material-ui/icons/Delete"
-import ErrorIcon from "@material-ui/icons/Error"
-import EditIcon from "@material-ui/icons/Edit"
-import SaveIcon from '@material-ui/icons/Save';
+import EmailIcon from '@material-ui/icons/Email'
+import DeleteIcon from '@material-ui/icons/Delete'
+import ErrorIcon from '@material-ui/icons/Error'
+import EditIcon from '@material-ui/icons/Edit'
+import SaveIcon from '@material-ui/icons/Save'
 // import logo from "./logo.png"
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    maxWidth: 200,
-    backgroundColor: theme.palette.background.paper,
-  },
+const useStyles = makeStyles(() => ({
+  // root: {
+  //   width: '15vw',
+  //   backgroundColor: theme.palette.background.paper,
+  // },
   dividerColor: {
-    backgroundColor: "#aaaaaa",
+    backgroundColor: '#aaaaaa',
   },
   selectedItemStyle: {
-    color: "#fb6949",
-    backgroundColor: "#c9fdff",
+    color: '#fb6949',
+    backgroundColor: '#c9fdff',
+  },
+  listItemText: {
+    fontSize: '20px',
   },
 }))
 // const headerStyle = {
@@ -40,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
 
 function SideNav() {
   const classes = useStyles()
-  const [selectedIndex, setSelectedIndex] = React.useState(1)
+  const page = window.location.pathname.substring(1)
+  console.log(page)
+  const [selectedIndex, setSelectedIndex] = React.useState(page)
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index)
@@ -48,13 +52,6 @@ function SideNav() {
 
   return (
     <React.Fragment>
-      {/* <header className="header" style={headerStyle}>
-        <h1>Determined Mail</h1>
-
-        <div className="logo">
-          <img src={logo} alt="logo" height="80" width="80" />
-        </div>
-      </header> */}
       <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
           <Divider className={classes.dividerColor} />
@@ -63,13 +60,16 @@ function SideNav() {
             to="/new"
             button
             classes={{ selected: classes.selectedItemStyle }}
-            selected={selectedIndex === 4}
-            onClick={(event) => handleListItemClick(event, 4)}
+            selected={selectedIndex === 'new'}
+            onClick={(event) => handleListItemClick(event, 'new')}
           >
             <ListItemIcon>
               <EditIcon />
             </ListItemIcon>
-            <ListItemText primary="NewMessage" />
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="NewMessage"
+            />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -77,13 +77,16 @@ function SideNav() {
             to="/"
             button
             classes={{ selected: classes.selectedItemStyle }}
-            selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}
+            selected={selectedIndex === 'inbox'}
+            onClick={(event) => handleListItemClick(event, 'inbox')}
           >
             <ListItemIcon>
               <EmailIcon />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Inbox"
+            />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -91,13 +94,16 @@ function SideNav() {
             to="/trash"
             classes={{ selected: classes.selectedItemStyle }}
             button
-            selected={selectedIndex === 3}
-            onClick={(event) => handleListItemClick(event, 3)}
+            selected={selectedIndex === 'trash'}
+            onClick={(event) => handleListItemClick(event, 'trash')}
           >
             <ListItemIcon>
               <DeleteIcon />
             </ListItemIcon>
-            <ListItemText primary="Trash" />
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Trash"
+            />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -105,13 +111,16 @@ function SideNav() {
             to="/spam"
             classes={{ selected: classes.selectedItemStyle }}
             button
-            selected={selectedIndex === 2}
-            onClick={(event) => handleListItemClick(event, 2)}
+            selected={selectedIndex === 'spam'}
+            onClick={(event) => handleListItemClick(event, 'spam')}
           >
             <ListItemIcon>
               <ErrorIcon />
             </ListItemIcon>
-            <ListItemText primary="Spam" />
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Spam"
+            />
           </ListItem>
           <Divider className={classes.dividerColor} />
           <ListItem
@@ -119,13 +128,16 @@ function SideNav() {
             to="/drafts"
             classes={{ selected: classes.selectedItemStyle }}
             button
-            selected={selectedIndex === 5}
-            onClick={(event) => handleListItemClick(event, 5)}
+            selected={selectedIndex === 'drafts'}
+            onClick={(event) => handleListItemClick(event, 'drafts')}
           >
             <ListItemIcon>
               <SaveIcon />
             </ListItemIcon>
-            <ListItemText primary="Saved Drafts" />
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary="Saved Drafts"
+            />
           </ListItem>
           <Divider className={classes.dividerColor} />
         </List>
