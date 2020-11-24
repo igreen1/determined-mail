@@ -1,0 +1,26 @@
+.metadata {
+  font-size: 25px;
+  font-family: arial;
+  color: white;
+  background-color: #fb6949;
+  margin-left: 220px;
+  margin-top: -275px;
+  border-radius: 10%;
+  height: 20vh;
+  width: 82vw;
+  align-items: center;
+  text-align: center;
+  padding: 8px 0px 8px 0px;
+}
+
+.emailBody {
+  font-size: 30px;
+  font-family: Arial;
+  color: black;
+  margin-left: 220px;
+  border-radius: 10%;
+  height: 20vh;
+  width: 82vw;
+  align-items: center;
+  text-align: left;
+}
