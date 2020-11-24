@@ -67,6 +67,7 @@ function SideNav() {
               <EditIcon />
             </ListItemIcon>
             <ListItemText
+              aria-label="Create a new message"
               classes={{ primary: classes.listItemText }}
               primary="NewMessage"
             />
@@ -84,6 +85,7 @@ function SideNav() {
               <EmailIcon />
             </ListItemIcon>
             <ListItemText
+              aria-label="Inbox"
               classes={{ primary: classes.listItemText }}
               primary="Inbox"
             />
@@ -101,6 +103,7 @@ function SideNav() {
               <DeleteIcon />
             </ListItemIcon>
             <ListItemText
+              aria-label="Trash"
               classes={{ primary: classes.listItemText }}
               primary="Trash"
             />
@@ -118,6 +121,7 @@ function SideNav() {
               <ErrorIcon />
             </ListItemIcon>
             <ListItemText
+              aria-label="Spam"
               classes={{ primary: classes.listItemText }}
               primary="Spam"
             />
@@ -135,6 +139,7 @@ function SideNav() {
               <SaveIcon />
             </ListItemIcon>
             <ListItemText
+              aria-label="Saved Drafts"
               classes={{ primary: classes.listItemText }}
               primary="Saved Drafts"
             />

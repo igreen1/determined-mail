@@ -11,11 +11,12 @@ const ReadEmail = ({ emails }) => {
       {' '}
       {/* <profile?> */}
       <div className="metadata">
-        <h2 className="from">From: {email?.from}</h2>
-        <h2 className="subject"> Subject: {email?.subject}</h2>
-      </div>
-      <p className="emailBody">{email?.body}</p>
+        <h2 aria-label={`From: ${email?.from}`}>From: {email?.from}</h2>
+        <h2 aria-label={`Subject: ${email?.subject}`}>Subject: {email?.subject}</h2>
     </div>
+      <textarea className="emailBody" aria-label={`${email?.body}`}>{email?.body}</textarea>
+    </div>
+
   )
 }
 

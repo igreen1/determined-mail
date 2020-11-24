@@ -35,22 +35,23 @@ const App = () => {
     allSelected,
     saveDraft,
     grabPage,
-    selectedToDeleted,
+    selectedToTrash,
     toggleSelectAll,
     selectedToSpam,
     selectedToInbox,
     permaDeleteEmail,
+    permaDeleteSelected,
   } = useEmails(hardcodedEmails)
 
   const [selectAllChecked, setSelectAllChecked] = useState(false)
 
   return (
     <Router>
-      <div className="app">
+      <div className="app" aria-label="Welcome to Determined Mail">
         <div className="header">
           <header className="header">
             <h1>Determined Mail</h1>
-            <div className="logo">
+            <div className="logo" aria-label="Determined Mail logo, magnifying glass with letter envelope inside">
               <img src={logo} alt="logo" height="80" width="80" />
             </div>
           </header>
@@ -62,9 +63,10 @@ const App = () => {
           {/* The view email list pages */}
           <Route exact path="/">
             <div className="EmailList">
-              <header className="page-header">
+              <header className="page-header" aria-label="Main Inbox">
                 {'Inbox'}
                 <input
+                  aria-label="Select all emails in main inbox"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -78,18 +80,20 @@ const App = () => {
                 <button
                   className="discard-button"
                   onClick={() => {
-                    selectedToDeleted
+                    selectedToTrash()
                   }}
+                  aria-label="Move to trash"
                 >
-                  Discard
+                  Trash
                 </button>
                 <button
                   className="mark-spam-button"
                   onClick={() => {
-                    selectedToSpam
+                    selectedToSpam()
                   }}
+                  aria-label="Move to spam"
                 >
-                  Mark as Spam
+                  Move to Spam
                 </button>
               </header>
 
@@ -102,9 +106,10 @@ const App = () => {
           </Route>
           <Route path="/spam">
             <div className="EmailList">
-              <header className="page-header">
+              <header className="page-header" aria-label="Spam">
                 {'Spam'}
                 <input
+                  aria-label="Select all emails in spam"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -118,10 +123,11 @@ const App = () => {
                 <button
                   className="discard-button"
                   onClick={() => {
-                    selectedToDeleted
+                    selectedToTrash()
                   }}
+                  aria-label="Move to trash"
                 >
-                  Discard
+                  Trash
                 </button>
               </header>
               <EmailList
@@ -133,9 +139,10 @@ const App = () => {
           </Route>
           <Route path="/trash">
             <div className="EmailList">
-              <header className="page-header">
+              <header className="page-header" aria-label="Trash">
                 {'Trash'}
                 <input
+                  aria-label="Select all emails in trash"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -149,10 +156,11 @@ const App = () => {
                 <button
                   className="discard-button"
                   onClick={() => {
-                    permaDeleteEmail
+                    permaDeleteSelected()
                   }}
+                  aria-label="Permanently delete"
                 >
-                  Discard
+                  Trash
                 </button>
               </header>
               <EmailList
@@ -164,9 +172,10 @@ const App = () => {
           </Route>
           <Route path="/drafts">
             <div className="EmailList">
-              <header className="page-header">
-                <div className="savedDrafts">Saved Drafts</div>
+              <header className="page-header" aria-label="Drafts">
+                <div className="savedDrafts"> Saved Drafts</div>
                 <input
+                  aria-label="Select all emails in drafts"
                   className="select"
                   type="checkbox"
                   id="selectAll"
@@ -180,10 +189,11 @@ const App = () => {
                 <button
                   className="discard-button"
                   onClick={() => {
-                    permaDeleteEmail
+                    permaDeleteSelected()
                   }}
+                  aria-label="Permanently delete"
                 >
-                  Discard
+                  Trash
                 </button>
               </header>
               <EmailList
@@ -196,7 +206,7 @@ const App = () => {
           {/* The write email page */}
           <Route exact path="/new">
             <div className="EmailList">
-              <header className="page-header">{'New Message'}</header>
+              <header className="page-header" aria-label="Write an email">{'New Message'}</header>
             </div>
             <WriteEmail
               sendEmail={(newEmail) => console.log(newEmail)}
@@ -205,7 +215,7 @@ const App = () => {
           </Route>
           <Route path="/new/:id">
             <div className="EmailList">
-              <header className="page-header">{'Edit Draft'}</header>
+              <header className="page-header" aria-label="Edit draft">{'Edit Draft'}</header>
             </div>
 
             <WriteEmail

@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { BsFillTrashFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+
 import './EmailItem.css'
+
 /* eslint-disable */
 
 const EmailItem = ({ email, deleteEmail, selectEmail }) => {
@@ -11,8 +13,8 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
     //draft page, display 'to' not 'from'
     emailInfo = (
       <Link className="link" to={`/new/${email?.id}`}>
-        <div className="to">To: {email?.to}</div>
-        <div className="subject">Subject: {email?.subject}</div>
+        <div className="to" aria-label={`To: ${email?.to}`}>To: {email?.to}</div>
+        <div className="subject" aria-label={`subject: ${email?.subject}`}>Subject: {email?.subject}</div>
       </Link>
     )
   } else {
@@ -20,8 +22,8 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
     emailInfo = (
       <Link className="link" to={`/email/${email.id}`}>
         <div className="profile">{email.profile}</div>
-        <div className="from">From: {email.from}</div>
-        <div className="subject">Subject: {email.subject}</div>
+        <div className="from" aria-label={`From: ${email.from}`}>From: {email.from}</div>
+        <div className="subject" aria-label={`subject: ${email.subject}`}>Subject: {email.subject}</div>
       </Link>
     )
   }
@@ -31,6 +33,7 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
       <div>
         <div className="email">
           <input
+            aria-label="Checkbox to select this email"
             className="select"
             type="checkbox"
             checked={!!email.selected}
@@ -40,6 +43,7 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
           />{' '}
           {emailInfo}
           <BsFillTrashFill
+            aria-label="Move to trash"
             className="delete"
             size={32}
             onClick={() => {
