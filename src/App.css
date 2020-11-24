@@ -40,8 +40,6 @@
   font-family: Braille, arial;
   font-size: 30px;
   padding: 20px;
-  padding-bottom: 40px;
-  font-size: 5vh;
   background-color: #fb6949;
   color: white;
   border: 1px #aaaaaa solid;
@@ -78,6 +76,7 @@
   padding: 1px;
   font-family: Ariel, sans-serif;
   border: 1px solid #aaaaaa;
+  width: 98vw;
 }
 
 .selectAll-label {
@@ -86,4 +85,10 @@
   text-align: left;
   margin-left: 2vw;
   margin-top: 20px;
+}
+
+.savedDrafts {
+  font-size: 5vh;
+  text-align: center;
+  margin-bottom: 0px;
 }

@@ -28,3 +28,12 @@
   align-items: center;
   text-align: center;
 }
+
+.from,
+.subject {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  width: 100vw;
+  align-items: center;
+}
