@@ -35,7 +35,7 @@ const App = () => {
     allSelected,
     saveDraft,
     grabPage,
-    selectedToDeleted,
+    selectedToTrash,
     toggleSelectAll,
     selectedToSpam,
     selectedToInbox,
@@ -79,7 +79,7 @@ const App = () => {
                 <button
                   className="discard-button"
                   onClick={() => {
-                    selectedToDeleted
+                    selectedToTrash()
                   }}
                   alt="Move to trash"
                 >
@@ -122,7 +122,7 @@ const App = () => {
                 <button
                   className="discard-button"
                   onClick={() => {
-                    selectedToDeleted
+                    selectedToTrash()
                   }}
                   alt="Move to trash"
                 >
