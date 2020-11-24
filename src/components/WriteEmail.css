@@ -1,8 +1,11 @@
 .input {
+  display: flex;
+  flex-direction: column;
   margin-left: 201px;
-  margin-top: -257px;
+  margin-right: 0px;
   background-color: #fff;
-  height: 3vh;
+  height: 5vh;
+  width: 80vw;
   border: 0px 0px 4px 4px;
   display: inline-block;
   border: 5px solid;
@@ -13,23 +16,26 @@
 }
 
 .label {
+  display: flex;
   margin-left: 201px;
-  margin-top: -257px;
+  margin-top: 5px;
   background-color: #fb6949;
-  height: '3vh';
+  height: 3vh;
+  width: 79.58vw;
   border-radius: 4px 4px 0px 0px;
-  font-family: 'arial';
+  font-family: arial;
   font-size: 25px;
   color: #fff;
-  padding: 10px 0px 5px 10px;
+  padding: 25px 10px 5px 10px;
 }
 
 .draftEmail {
+  display: flex;
   margin-left: 201px;
-  margin-top: -257px;
   resize: none;
   background-color: #fff;
   height: 50vh;
+  width: 80vw;
   display: inline-block;
   border-radius: 0px 0px 10px 10px;
   font-family: arial;
@@ -40,6 +46,7 @@
 }
 
 .button {
+  display: flex;
   margin-left: 201px;
   margin-top: -257px;
   background-color: #fb6949;
@@ -48,24 +55,27 @@
   font-size: 25px;
   width: 10vw;
   height: 5vh;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   margin: 5px;
   border: none;
 }
 
 .buttonContainer {
-  margin-left: 201px;
-  margin-top: -257px;
   display: flex;
-  flex-direction: 'row-reverse';
-  width: 80vw;
+  margin-top: 7px;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 90vw;
   margin-top: 5px;
+  padding: 2px;
 }
 
-.container {
+.textFieldContainer {
+  display: flex;
   margin-left: 201px;
-  margin-top: -257px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 180vw;
 }
