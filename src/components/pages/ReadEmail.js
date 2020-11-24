@@ -11,8 +11,8 @@ const ReadEmail = ({ emails }) => {
       {' '}
       {/* <profile?> */}
       <div className="metadata">
-        <h2>From: {email?.from}</h2>
-        <h2>Subject: {email?.subject}</h2>
+        <h2 className="from">From: {email?.from}</h2>
+        <h2 className="subject"> Subject: {email?.subject}</h2>
       </div>
       <p className="emailBody">{email?.body}</p>
     </div>
