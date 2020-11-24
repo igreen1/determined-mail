@@ -43,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
 
 function SideNav() {
   const classes = useStyles()
-  const [selectedIndex, setSelectedIndex] = React.useState(1)
+  const page = (window.location.pathname).substring(1)
+  console.log(page)
+  const [selectedIndex, setSelectedIndex] = React.useState(page)
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index)
@@ -59,8 +61,8 @@ function SideNav() {
             to="/new"
             button
             classes={{ selected: classes.selectedItemStyle }}
-            selected={selectedIndex === 4}
-            onClick={(event) => handleListItemClick(event, 4)}
+            selected={selectedIndex === 'new'}
+            onClick={(event) => handleListItemClick(event, 'new')}
           >
             <ListItemIcon>
               <EditIcon />
@@ -73,8 +75,8 @@ function SideNav() {
             to="/"
             button
             classes={{ selected: classes.selectedItemStyle }}
-            selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}
+            selected={selectedIndex === 'inbox'}
+            onClick={(event) => handleListItemClick(event, 'inbox')}
           >
             <ListItemIcon>
               <EmailIcon />
@@ -87,8 +89,8 @@ function SideNav() {
             to="/trash"
             classes={{ selected: classes.selectedItemStyle }}
             button
-            selected={selectedIndex === 3}
-            onClick={(event) => handleListItemClick(event, 3)}
+            selected={selectedIndex === 'trash'}
+            onClick={(event) => handleListItemClick(event, 'trash')}
           >
             <ListItemIcon>
               <DeleteIcon />
@@ -101,8 +103,8 @@ function SideNav() {
             to="/spam"
             classes={{ selected: classes.selectedItemStyle }}
             button
-            selected={selectedIndex === 2}
-            onClick={(event) => handleListItemClick(event, 2)}
+            selected={selectedIndex === 'spam'}
+            onClick={(event) => handleListItemClick(event, 'spam')}
           >
             <ListItemIcon>
               <ErrorIcon />
@@ -115,8 +117,8 @@ function SideNav() {
             to="/drafts"
             classes={{ selected: classes.selectedItemStyle }}
             button
-            selected={selectedIndex === 5}
-            onClick={(event) => handleListItemClick(event, 5)}
+            selected={selectedIndex === 'drafts'}
+            onClick={(event) => handleListItemClick(event, 'drafts')}
           >
             <ListItemIcon>
               <SaveIcon />
