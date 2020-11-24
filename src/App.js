@@ -40,6 +40,7 @@ const App = () => {
     selectedToSpam,
     selectedToInbox,
     permaDeleteEmail,
+    permaDeleteSelected,
   } = useEmails(hardcodedEmails)
 
   const [selectAllChecked, setSelectAllChecked] = useState(false)
@@ -155,7 +156,7 @@ const App = () => {
                 <button
                   className="discard-button"
                   onClick={() => {
-                    permaDeleteEmail
+                    permaDeleteSelected()
                   }}
                   aria-label="Permanently delete"
                 >
@@ -188,7 +189,7 @@ const App = () => {
                 <button
                   className="discard-button"
                   onClick={() => {
-                    permaDeleteEmail
+                    permaDeleteSelected()
                   }}
                   aria-label="Permanently delete"
                 >

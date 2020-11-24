@@ -1,26 +1,30 @@
 .metadata {
-  font-size: 25px;
-  font-family: arial;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  font-family: Arial;
   color: white;
   background-color: #fb6949;
   margin-left: 220px;
-  margin-top: -275px;
-  border-radius: 10%;
-  height: 20vh;
+  margin-top: -280px;
+  height: 12vh;
   width: 82vw;
   align-items: center;
   text-align: center;
-  padding: 8px 0px 8px 0px;
+  padding: 8px 0px 0px 0px;
 }
 
 .emailBody {
+  display: flex;
   font-size: 30px;
   font-family: Arial;
   color: black;
   margin-left: 220px;
-  border-radius: 10%;
+  border: 5px solid #fb6949;
   height: 20vh;
-  width: 82vw;
+  width: 80vw;
+  margin-top: 20px;
+  padding: 10px;
   align-items: center;
-  text-align: left;
+  text-align: center;
 }
