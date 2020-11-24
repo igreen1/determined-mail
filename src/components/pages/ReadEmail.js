@@ -12,7 +12,7 @@ const ReadEmail = ({ emails }) => {
       {/* <profile?> */}
       <h2 alt={`From: ${email?.from}`}>From: {email?.from}</h2>
       <h2 alt={`Subject: ${email?.subject}`}>Subject: {email?.subject}</h2>
-      <p className="emailBody" alt={`${email?.body}`}>{email?.body}</p>
+      <textarea className="emailBody" alt={`${email?.body}`}>{email?.body}</textarea>
     </div>
 
   )
