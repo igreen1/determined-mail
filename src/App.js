@@ -135,15 +135,6 @@ const App = () => {
                   }}
                 />{' '}
                 <button
-                  className="mark-spam-button"
-                  onClick={() => {
-                    selectedToInbox()
-                  }}
-                  aria-label="Move to inbox"
-                >
-                  Move to inbox
-                </button>
-                <button
                   className="discard-button"
                   onClick={() => {
                     permaDeleteSelected()
@@ -151,6 +142,15 @@ const App = () => {
                   aria-label="Permanently delete"
                 >
                   Delete
+                </button>
+                <button
+                  className="mark-spam-button"
+                  onClick={() => {
+                    selectedToInbox()
+                  }}
+                  aria-label="Move to inbox"
+                >
+                  Move to inbox
                 </button>
               </header>
               <EmailList
