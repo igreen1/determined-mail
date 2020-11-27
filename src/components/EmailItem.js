@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 
 import './EmailItem.css'
 
-/* eslint-disable */
-
 const EmailItem = ({ email, deleteEmail, selectEmail }) => {
   let emailInfo
   if (email.page === 'draft' || email.to) {
@@ -37,7 +35,7 @@ const EmailItem = ({ email, deleteEmail, selectEmail }) => {
             className="select"
             type="checkbox"
             checked={!!email.selected}
-            onClick={(event) => {
+            onClick={() => {
               selectEmail(email.id)
             }}
           />{' '}

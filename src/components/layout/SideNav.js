@@ -5,21 +5,14 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Divider from '@material-ui/core/Divider'
-// import InboxIcon from "@material-ui/icons/Inbox"
-// import DraftsIcon from "@material-ui/icons/Drafts"
 import EmailIcon from '@material-ui/icons/Email'
 import DeleteIcon from '@material-ui/icons/Delete'
 import ErrorIcon from '@material-ui/icons/Error'
 import EditIcon from '@material-ui/icons/Edit'
 import SaveIcon from '@material-ui/icons/Save'
-// import logo from "./logo.png"
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(() => ({
-  // root: {
-  //   width: '15vw',
-  //   backgroundColor: theme.palette.background.paper,
-  // },
   dividerColor: {
     backgroundColor: '#aaaaaa',
   },
@@ -31,14 +24,6 @@ const useStyles = makeStyles(() => ({
     fontSize: '20px',
   },
 }))
-// const headerStyle = {
-//   background: "#c9fdff",
-//   color: "#000000",
-//   textAlign: "center",
-//   padding: "1px",
-//   fontFamily: "Ariel, sans-serif",
-//   border: "1px solid #aaaaaa",
-// }
 
 function SideNav() {
   const classes = useStyles()

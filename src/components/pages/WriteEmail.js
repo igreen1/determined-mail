@@ -1,10 +1,8 @@
-/* eslint-disable */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import './WriteEmail.css'
-/* eslint-disable */
 
 const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
   const history = useHistory()
@@ -36,7 +34,10 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         />
       </div>
       <div className="textfieldContainer">
-        <label className="label" aria-label="Enter CC, carbon copy, recipient here">
+        <label
+          className="label"
+          aria-label="Enter CC, carbon copy, recipient here"
+        >
           <b>CC:</b>
         </label>
         <input
@@ -48,7 +49,10 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         />
       </div>
       <div className="textfieldContainer">
-        <label className="label" aria-label="Enter BCC, blind carbon copy, recipient here">
+        <label
+          className="label"
+          aria-label="Enter BCC, blind carbon copy, recipient here"
+        >
           <b>BCC:</b>
         </label>
         <input
@@ -65,7 +69,6 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         </label>
         <input
           type="text"
-          className="Subject"
           className="input"
           value={subject}
           placeholder="Enter subject of email here"
