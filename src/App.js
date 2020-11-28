@@ -150,7 +150,7 @@ const App = () => {
                   }}
                   aria-label="Move to inbox"
                 >
-                  Move to inbox
+                  Move to Inbox
                 </button>
               </header>
               <EmailList
@@ -182,7 +182,7 @@ const App = () => {
                   }}
                   aria-label="Permanently delete"
                 >
-                  Trash
+                  Delete
                 </button>
               </header>
               <EmailList
