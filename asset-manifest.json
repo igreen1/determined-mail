@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/determined-mail/static/css/main.e09ab0ff.chunk.css",
-    "main.js": "/determined-mail/static/js/main.7bfd98c0.chunk.js",
-    "main.js.map": "/determined-mail/static/js/main.7bfd98c0.chunk.js.map",
+    "main.js": "/determined-mail/static/js/main.f06a1e73.chunk.js",
+    "main.js.map": "/determined-mail/static/js/main.f06a1e73.chunk.js.map",
     "runtime-main.js": "/determined-mail/static/js/runtime-main.22503c1f.js",
     "runtime-main.js.map": "/determined-mail/static/js/runtime-main.22503c1f.js.map",
     "static/js/2.31f2f396.chunk.js": "/determined-mail/static/js/2.31f2f396.chunk.js",
@@ -28,6 +28,6 @@
     "static/js/runtime-main.22503c1f.js",
     "static/js/2.31f2f396.chunk.js",
     "static/css/main.e09ab0ff.chunk.css",
-    "static/js/main.7bfd98c0.chunk.js"
+    "static/js/main.f06a1e73.chunk.js"
   ]
 }
