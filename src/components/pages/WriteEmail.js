@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import * as EmailValidator from 'email-validator'
 import './WriteEmail.css'
 
 const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
@@ -19,6 +20,27 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
   const [body, setBody] = email ? useState(email.body) : useState('')
   const [subject, setSubject] = email ? useState(email.subject) : useState('')
 
+  const send = (email)=>{
+    let message = '';
+    if(!EmailValidator.validate(email.to))
+      message += `Recipient '${email.to}' is invalid\n`
+    
+    if(!EmailValidator.validate(email.cc) && email.cc !== '')
+      message += `CC '${email.cc}' is invalid\n`
+    
+    if(!EmailValidator.validate(email.bcc) && email.bcc !== '')
+      message += `BCC '${email.bcc}' is invalid\n`
+    
+
+    if(message !== ''){
+      alert(message)
+    }
+      
+    // Only warn them, send anyways :)
+    // It's their choice to send to a bad email address, not ours
+    return sendEmail(email);
+  }
+
   return (
     <div>
       <div className="textfieldContainer">
@@ -29,6 +51,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
           type="text"
           className="input"
           value={to}
+          style = {{'background-color': EmailValidator.validate(to) || to==='' ? '#fff': '#d4d4d4'}}
           placeholder="Enter your email recipient here"
           onChange={(event) => setTo(event.target.value)}
         />
@@ -44,6 +67,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
           type="text"
           className="input"
           value={cc}
+          style = {{'background-color': EmailValidator.validate(cc) || cc==='' ? '#fff': '#d4d4d4'}}
           placeholder="Enter your CC recipient here"
           onChange={(event) => setCC(event.target.value)}
         />
@@ -59,6 +83,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
           type="text"
           className="input"
           value={bcc}
+          style = {{'background-color': EmailValidator.validate(bcc) || bcc==='' ? '#fff': '#d4d4d4'}}
           onChange={(event) => setBCC(event.target.value)}
           placeholder="Enter your BCC recipient here"
         />
@@ -91,7 +116,7 @@ const WriteEmail = ({ sendEmail, saveDraft, emails }) => {
         <button
           aria-label="Send email"
           className="button"
-          onClick={() => sendEmail({ subject, to, bcc, cc, body })}
+          onClick={() => send({ subject, to, bcc, cc, body })}
         >
           Send
         </button>
